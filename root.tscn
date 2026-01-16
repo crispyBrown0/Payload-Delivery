@@ -9,10 +9,20 @@
 
 [node name="TerrainColli" type="CollisionPolygon2D" parent="Terrain"]
 position = Vector2(-206, 147)
-polygon = PackedVector2Array(156, 496, 387, 361, 764, 496, 604, 593)
+polygon = PackedVector2Array(156, 496, 389, 490, 1099, 518, 604, 593)
 script = ExtResource("1_pyidc")
 
 [node name="TerrainPoly" type="Polygon2D" parent="Terrain/TerrainColli"]
 polygon = PackedVector2Array(156, 496, 389, 490, 1099, 518, 604, 593)
 uv = PackedVector2Array(156, 496, 387, 361, 764, 496, 604, 593)
 script = ExtResource("2_vvh5c")
+
+[node name="PlayerBase" type="Sprite2D" parent="."]
+
+[node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase"]
+
+[node name="Projectile" type="Sprite2D" parent="PlayerBase/PlayerWeapon"]
+
+[node name="Camera2D" type="Camera2D" parent="PlayerBase/PlayerWeapon/Projectile"]
+
+[node name="Enemy" type="Sprite2D" parent="."]
