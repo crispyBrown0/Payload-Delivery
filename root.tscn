@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=7 format=3 uid="uid://bsglis4bpvfa"]
 
+[ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://lava.png" id="1_jnlp7"]
 [ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://terrain_colli.gd" id="1_pyidc"]
 [ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://terrain.gd" id="1_vvh5c"]
 [ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://terrain_poly.gd" id="2_vvh5c"]
@@ -10,10 +11,19 @@ size = Vector2(100, 100)
 
 [node name="Root" type="Node2D"]
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1000, 1000)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_jnlp7")
+
 [node name="Terrain" type="StaticBody2D" parent="."]
 script = ExtResource("1_vvh5c")
 
 [node name="TerrainPoly" type="Polygon2D" parent="Terrain"]
+color = Color(0.25, 0.195, 0.099999994, 1)
 polygon = PackedVector2Array(194, -118, -161, 623, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
 script = ExtResource("2_vvh5c")
 
@@ -21,21 +31,27 @@ script = ExtResource("2_vvh5c")
 polygon = PackedVector2Array(156, 496, 389, 490, 1099, 518, 604, 593)
 script = ExtResource("1_pyidc")
 
+[node name="TerrainLine" type="Line2D" parent="Terrain"]
+points = PackedVector2Array(194, -118, -161, 623, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
+closed = true
+width = 20.0
+default_color = Color(0.07233341, 0.62, 0, 1)
+
 [node name="PlayerBase" type="Sprite2D" parent="."]
 
 [node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase"]
 
 [node name="Projectile" type="Sprite2D" parent="PlayerBase/PlayerWeapon"]
 
-[node name="Camera2D" type="Camera2D" parent="PlayerBase/PlayerWeapon/Projectile"]
-
 [node name="Enemy" type="Sprite2D" parent="."]
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(85, -173)
+position = Vector2(184, -261)
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("4_28aoi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource("RectangleShape2D_jnlp7")
+
+[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
