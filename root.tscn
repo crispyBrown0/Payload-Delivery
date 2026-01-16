@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsglis4bpvfa"]
+
+[ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://terrain_colli.gd" id="1_pyidc"]
+[ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://terrain_poly.gd" id="2_vvh5c"]
+
+[node name="Root" type="Node2D"]
+
+[node name="Terrain" type="RigidBody2D" parent="."]
+
+[node name="TerrainColli" type="CollisionPolygon2D" parent="Terrain"]
+position = Vector2(-206, 147)
+polygon = PackedVector2Array(156, 496, 387, 361, 764, 496, 604, 593)
+script = ExtResource("1_pyidc")
+
+[node name="TerrainPoly" type="Polygon2D" parent="Terrain/TerrainColli"]
+polygon = PackedVector2Array(156, 496, 389, 490, 1099, 518, 604, 593)
+uv = PackedVector2Array(156, 496, 387, 361, 764, 496, 604, 593)
+script = ExtResource("2_vvh5c")
