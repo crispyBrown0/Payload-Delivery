@@ -12,7 +12,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	esc_settings()
+	
+func esc_settings():
+	if type != 1:
+		return
+	if Input.is_action_just_pressed("escape"):
+		clicked()
 
 func clicked():
 	match type:

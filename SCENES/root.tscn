@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=12 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://scripts/terrain.gd" id="2_hoix4"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cu2p3duqsv2l5" path="res://prefabs/enemy.tscn" id="7_6ejct"]
 [ext_resource type="PackedScene" uid="uid://bmkerlxk4ys22" path="res://prefabs/projectile.tscn" id="7_hoix4"]
 [ext_resource type="Script" uid="uid://1seu65c3kr8y" path="res://scripts/camera.gd" id="8_ofq0x"]
+[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="10_uqopg"]
+[ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://SCENES/settings.tscn" id="11_sp5yh"]
 
 [node name="Root" type="Node2D"]
 
@@ -98,3 +100,20 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 text = "OKAY"
+
+[node name="settings" type="Button" parent="UI LAYER/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "SETTINGS"
+script = ExtResource("10_uqopg")
+type = 1
+settings = ExtResource("11_sp5yh")
