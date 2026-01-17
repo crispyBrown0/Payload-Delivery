@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=13 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://scripts/terrain.gd" id="2_hoix4"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://1seu65c3kr8y" path="res://scripts/camera.gd" id="8_ofq0x"]
 [ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="10_uqopg"]
 [ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://SCENES/settings.tscn" id="11_sp5yh"]
+[ext_resource type="FontFile" uid="uid://bhcly8fa3dvsu" path="res://font/BunkerStencil-Regular.otf" id="12_sp5yh"]
 
 [node name="Root" type="Node2D"]
 
@@ -29,15 +30,13 @@ script = ExtResource("2_hoix4")
 
 [node name="TerrainPoly" type="Polygon2D" parent="MAP/Terrain"]
 color = Color(0.25, 0.195, 0.099999994, 1)
-polygon = PackedVector2Array(-911, -114, -1302, 734, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
+polygon = PackedVector2Array(-1581, 813, 6315, 818, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1508, -32, -100, 95)
 script = ExtResource("3_ak04c")
 
 [node name="TerrainColli" type="CollisionPolygon2D" parent="MAP/Terrain"]
-polygon = PackedVector2Array(-911, -114, -1302, 734, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
 script = ExtResource("4_uqopg")
 
 [node name="TerrainLine" type="Line2D" parent="MAP/Terrain"]
-points = PackedVector2Array(-911, -114, -1302, 734, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
 closed = true
 width = 20.0
 default_color = Color(0.07233341, 0.62, 0, 1)
@@ -59,10 +58,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerBase" type="Sprite2D" parent="."]
-position = Vector2(-190, -154)
 texture = ExtResource("5_sp5yh")
 
-[node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase" node_paths=PackedStringArray("cam", "okay")]
+[node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase" node_paths=PackedStringArray("cam", "okay", "shot_info")]
 position = Vector2(57, -53)
 texture = ExtResource("5_sp5yh")
 script = ExtResource("6_pbyad")
@@ -70,6 +68,7 @@ rotation_speed = 1.5
 cam = NodePath("../../CAMERA")
 projectile = ExtResource("7_hoix4")
 okay = NodePath("../../UI LAYER/Control/okay")
+shot_info = NodePath("../../UI LAYER/Control/shot info")
 
 [node name="enemy" parent="." instance=ExtResource("7_6ejct")]
 position = Vector2(1102, -421)
@@ -84,6 +83,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
+
+[node name="shot info" type="RichTextLabel" parent="UI LAYER/Control"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 500.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("12_sp5yh")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "45.0 degrees
+1000 m
+
+target
+1000 m"
+autowrap_mode = 0
 
 [node name="okay" type="Button" parent="UI LAYER/Control"]
 layout_mode = 1

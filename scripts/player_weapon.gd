@@ -5,10 +5,16 @@ extends Sprite2D
 @export var cam: Camera2D
 @export var projectile: PackedScene
 @export var okay: Button
+@export var shot_info: RichTextLabel
 
 var can_fire = true
 
 var reset_in = -1
+
+var info_angle = 0
+var tracking_bullet = null
+var dist_tracked = 0
+var info_Tdist = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +27,7 @@ func _process(delta: float) -> void:
 	aiming()
 	#reset_camera()
 	try_reset_camera()
+	write_info()
 	
 func _physics_process(delta: float) -> void:
 	
@@ -29,9 +36,14 @@ func _physics_process(delta: float) -> void:
 
 
 func aiming():
+	if !can_fire:
+		return
+	
 	var target_angle = (get_global_mouse_position() - global_position).angle()
 	rotation = rotate_toward(rotation, target_angle, rotation_speed * get_process_delta_time())
 	rotation_degrees = clamp(rotation_degrees, -90, 30)
+	
+	info_angle = rotation_degrees
 
 func reset_camera():
 	if cam.to_follow == null:
@@ -57,6 +69,7 @@ func try_fire():
 	cam.to_follow = new_projectile
 	cam.cam_offset = Vector2.ZERO
 	reset_in = 20 #arbitrary number (see func try_reset_camera)
+	tracking_bullet = new_projectile
 	
 	#new_projectile.global_transform = current_projectile.global_transform
 	#new_projectile.freeze = false
@@ -75,3 +88,22 @@ func reset_firing():
 	reset_camera()
 	okay.visible = false
 	can_fire = true
+	shot_info.visible = true
+	tracking_bullet = null
+	dist_tracked = 0
+
+func write_info():
+	var print_angle = str(int(info_angle * -10)/10.0) + " degrees"
+	var print_dist = "--- m"
+	
+	if tracking_bullet != null:
+		dist_tracked = (tracking_bullet.global_position.x - global_position.x)/100.0
+	
+	if dist_tracked > 0:
+		print_dist = dist_tracked
+		if print_dist < 1000:
+			print_dist = str(int(print_dist)) + " m"
+		else:
+			print_dist = str(int(print_dist/100)/10.0) + " km" #"rounded" to tenths
+	
+	shot_info.text = print_angle + "\n" + print_dist + "\n\ntarget\n" + "---m" 
