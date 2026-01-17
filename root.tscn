@@ -43,10 +43,14 @@ texture = ExtResource("4_28aoi")
 position = Vector2(57, -53)
 texture = ExtResource("4_28aoi")
 script = ExtResource("6_l8v81")
+rotation_speed = 1.5
 
 [node name="Projectile" type="Sprite2D" parent="PlayerBase/PlayerWeapon"]
 
 [node name="Camera2D" type="Camera2D" parent="PlayerBase/PlayerWeapon/Projectile"]
-position = Vector2(148, -53)
+position = Vector2(100, 0)
+zoom = Vector2(0.7, 0.7)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [node name="Enemy" type="Sprite2D" parent="."]
