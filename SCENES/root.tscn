@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=19 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://scripts/terrain.gd" id="2_hoix4"]
 [ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://scripts/terrain_poly.gd" id="3_ak04c"]
 [ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://scripts/terrain_colli.gd" id="4_uqopg"]
-[ext_resource type="Texture2D" uid="uid://c7oqfngkfy332" path="res://icon.svg" id="5_sp5yh"]
+[ext_resource type="Texture2D" uid="uid://xqajuavigfso" path="res://sprite assets/weapons/PlayerBase.png" id="6_eshlv"]
 [ext_resource type="Script" uid="uid://cixtg8s0rmx2q" path="res://scripts/player_weapon.gd" id="6_pbyad"]
 [ext_resource type="PackedScene" uid="uid://cu2p3duqsv2l5" path="res://prefabs/enemy.tscn" id="7_6ejct"]
+[ext_resource type="Texture2D" uid="uid://jbedd4uk5rsp" path="res://sprite assets/weapons/50BMG.png" id="7_ep8ct"]
 [ext_resource type="PackedScene" uid="uid://bmkerlxk4ys22" path="res://prefabs/projectiles/0projectile.tscn" id="7_hoix4"]
 [ext_resource type="Script" uid="uid://1seu65c3kr8y" path="res://scripts/camera.gd" id="8_ofq0x"]
 [ext_resource type="PackedScene" uid="uid://bj8sm5vvy876j" path="res://prefabs/projectiles/1rubber band.tscn" id="9_pbyad"]
@@ -28,6 +29,7 @@ repeat_size = Vector2(1000, 1000)
 repeat_times = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="MAP/Parallax2D"]
+z_index = -10
 texture = ExtResource("1_2xdqe")
 
 [node name="Terrain" type="StaticBody2D" parent="MAP"]
@@ -63,11 +65,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerBase" type="Sprite2D" parent="."]
-texture = ExtResource("5_sp5yh")
+position = Vector2(68, -86)
+texture = ExtResource("6_eshlv")
 
 [node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase" node_paths=PackedStringArray("cam", "okay", "shot_info")]
-position = Vector2(57, -53)
-texture = ExtResource("5_sp5yh")
+z_index = -1
+position = Vector2(155, 35)
+texture = ExtResource("7_ep8ct")
+offset = Vector2(-97, -162)
+hframes = 2
 script = ExtResource("6_pbyad")
 rotation_speed = 1.5
 cam = NodePath("../../CAMERA")
