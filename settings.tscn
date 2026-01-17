@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqhy0m0a2cbl5"]
+
+[ext_resource type="Script" uid="uid://iyrdds2nj74j" path="res://settings.gd" id="1_3ykye"]
+[ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="1_nkug2"]
+[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://button.gd" id="2_3ykye"]
+
+[sub_resource type="Gradient" id="Gradient_gc0em"]
+colors = PackedColorArray(0.87761605, 0.8776157, 0.8776157, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cj1lu"]
+frequency = 0.25
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_71mqq"]
+noise = SubResource("FastNoiseLite_cj1lu")
+color_ramp = SubResource("Gradient_gc0em")
+
+[node name="settings" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ykye")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 135.0
+offset_right = 1680.0
+offset_bottom = 945.0
+texture = SubResource("NoiseTexture2D_71mqq")
+
+[node name="bg2" type="TextureRect" parent="bg"]
+self_modulate = Color(0.1, 0.1, 0.1, 1)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 1465.0
+offset_bottom = 835.0
+pivot_offset = Vector2(720, 405)
+texture = SubResource("NoiseTexture2D_71mqq")
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 135.0
+offset_right = 1210.0
+offset_bottom = 285.0
+theme_override_fonts/normal_font = ExtResource("1_nkug2")
+bbcode_enabled = true
+text = "[font_size=120][color=black]SETTINGS"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 245.0
+offset_top = 138.0
+offset_right = 431.0
+offset_bottom = 218.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_nkug2")
+theme_override_font_sizes/font_size = 75
+text = "CLOSE"
+script = ExtResource("2_3ykye")
+type = 3

@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbmjkp62qsx3y"]
+
+[ext_resource type="Texture2D" uid="uid://c75ixqcu6nk5a" path="res://sprite assets/placeholder tankj.png" id="1_v3601"]
+[ext_resource type="FontFile" uid="uid://blgm6ljfdfuhm" path="res://font/BlackWhiteBlock.ttf" id="2_xm10s"]
+[ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="3_tv5ll"]
+[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://button.gd" id="4_bwrsn"]
+[ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://settings.tscn" id="5_xm10s"]
+
+[node name="mainmen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_v3601")
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 1920.0
+offset_bottom = 300.0
+theme_override_fonts/normal_font = ExtResource("2_xm10s")
+bbcode_enabled = true
+text = "[font_size=108]PAYLOAD    DELIVERY"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 500.0
+offset_right = 1210.0
+offset_bottom = 602.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_tv5ll")
+theme_override_font_sizes/font_size = 100
+text = "PLAY"
+script = ExtResource("4_bwrsn")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 650.0
+offset_right = 1210.0
+offset_bottom = 752.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_tv5ll")
+theme_override_font_sizes/font_size = 100
+text = "SETTINGS"
+script = ExtResource("4_bwrsn")
+type = 1
+settings = ExtResource("5_xm10s")
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 800.0
+offset_right = 1210.0
+offset_bottom = 902.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_tv5ll")
+theme_override_font_sizes/font_size = 100
+text = "QUIT"
+script = ExtResource("4_bwrsn")
+type = 2
