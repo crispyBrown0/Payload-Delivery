@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqhy0m0a2cbl5"]
 
-[ext_resource type="Script" uid="uid://iyrdds2nj74j" path="res://settings.gd" id="1_3ykye"]
+[ext_resource type="Script" uid="uid://iyrdds2nj74j" path="res://scripts/settings.gd" id="1_3ykye"]
 [ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="1_nkug2"]
-[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://button.gd" id="2_3ykye"]
+[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="2_3ykye"]
 
 [sub_resource type="Gradient" id="Gradient_gc0em"]
 colors = PackedColorArray(0.87761605, 0.8776157, 0.8776157, 1, 1, 1, 1, 1)

@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsglis4bpvfa"]
+
+[ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/lava.png" id="1_2xdqe"]
+[ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://scripts/terrain.gd" id="2_hoix4"]
+[ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://scripts/terrain_poly.gd" id="3_ak04c"]
+[ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://scripts/terrain_colli.gd" id="4_uqopg"]
+[ext_resource type="Texture2D" uid="uid://c7oqfngkfy332" path="res://icon.svg" id="5_sp5yh"]
+[ext_resource type="Script" uid="uid://cixtg8s0rmx2q" path="res://scripts/player_weapon.gd" id="6_pbyad"]
+[ext_resource type="PackedScene" uid="uid://cu2p3duqsv2l5" path="res://prefabs/enemy.tscn" id="7_6ejct"]
+[ext_resource type="PackedScene" uid="uid://bmkerlxk4ys22" path="res://prefabs/projectile.tscn" id="7_hoix4"]
+[ext_resource type="Script" uid="uid://1seu65c3kr8y" path="res://scripts/camera.gd" id="8_ofq0x"]
+
+[node name="Root" type="Node2D"]
+
+[node name="MAP" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="MAP"]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1000, 1000)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="MAP/Parallax2D"]
+texture = ExtResource("1_2xdqe")
+
+[node name="Terrain" type="StaticBody2D" parent="MAP"]
+script = ExtResource("2_hoix4")
+
+[node name="TerrainPoly" type="Polygon2D" parent="MAP/Terrain"]
+color = Color(0.25, 0.195, 0.099999994, 1)
+polygon = PackedVector2Array(-911, -114, -1302, 734, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
+script = ExtResource("3_ak04c")
+
+[node name="TerrainColli" type="CollisionPolygon2D" parent="MAP/Terrain"]
+polygon = PackedVector2Array(-911, -114, -1302, 734, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
+script = ExtResource("4_uqopg")
+
+[node name="TerrainLine" type="Line2D" parent="MAP/Terrain"]
+points = PackedVector2Array(-911, -114, -1302, 734, 5416, 645, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1509, -58)
+closed = true
+width = 20.0
+default_color = Color(0.07233341, 0.62, 0, 1)
+
+[node name="CAMERA" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+script = ExtResource("8_ofq0x")
+
+[node name="Control" type="Control" parent="CAMERA"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerBase" type="Sprite2D" parent="."]
+position = Vector2(-190, -154)
+texture = ExtResource("5_sp5yh")
+
+[node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase" node_paths=PackedStringArray("cam", "okay")]
+position = Vector2(57, -53)
+texture = ExtResource("5_sp5yh")
+script = ExtResource("6_pbyad")
+rotation_speed = 1.5
+cam = NodePath("../../CAMERA")
+projectile = ExtResource("7_hoix4")
+okay = NodePath("../../UI LAYER/Control/okay")
+
+[node name="enemy" parent="." instance=ExtResource("7_6ejct")]
+position = Vector2(1102, -421)
+
+[node name="UI LAYER" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI LAYER"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+
+[node name="okay" type="Button" parent="UI LAYER/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "OKAY"

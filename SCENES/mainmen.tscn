@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbmjkp62qsx3y"]
+[gd_scene load_steps=7 format=3 uid="uid://bbmjkp62qsx3y"]
 
 [ext_resource type="Texture2D" uid="uid://c75ixqcu6nk5a" path="res://sprite assets/placeholder tankj.png" id="1_v3601"]
 [ext_resource type="FontFile" uid="uid://blgm6ljfdfuhm" path="res://font/BlackWhiteBlock.ttf" id="2_xm10s"]
 [ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="3_tv5ll"]
-[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://button.gd" id="4_bwrsn"]
-[ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://settings.tscn" id="5_xm10s"]
+[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="4_bwrsn"]
+[ext_resource type="PackedScene" uid="uid://bsglis4bpvfa" path="res://SCENES/root.tscn" id="5_pawoi"]
+[ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://SCENES/settings.tscn" id="5_xm10s"]
 
 [node name="mainmen" type="Control"]
 layout_mode = 3
@@ -31,7 +32,7 @@ bbcode_enabled = true
 text = "[font_size=108]PAYLOAD    DELIVERY"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." node_paths=PackedStringArray("loading")]
 layout_mode = 0
 offset_left = 710.0
 offset_top = 500.0
@@ -42,6 +43,8 @@ theme_override_fonts/font = ExtResource("3_tv5ll")
 theme_override_font_sizes/font_size = 100
 text = "PLAY"
 script = ExtResource("4_bwrsn")
+game = ExtResource("5_pawoi")
+loading = NodePath("../loading")
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
@@ -69,3 +72,17 @@ theme_override_font_sizes/font_size = 100
 text = "QUIT"
 script = ExtResource("4_bwrsn")
 type = 2
+
+[node name="loading" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 460.0
+offset_top = 415.0
+offset_right = 1460.0
+offset_bottom = 665.0
+theme_override_fonts/normal_font = ExtResource("3_tv5ll")
+bbcode_enabled = true
+text = "[font_size=200][bgcolor=black]LOADING..."
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

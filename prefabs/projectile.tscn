@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmkerlxk4ys22"]
+
+[ext_resource type="Script" uid="uid://bye6l3o603wry" path="res://scripts/projectile.gd" id="1_how8d"]
+[ext_resource type="Texture2D" uid="uid://c7oqfngkfy332" path="res://icon.svg" id="2_xjgtm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxf0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_how8d"]
+size = Vector2(1000, 20)
+
+[node name="Projectile" type="RigidBody2D"]
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_how8d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xjgtm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_qxf0c")
+
+[node name="hi-speeds" type="CollisionShape2D" parent="."]
+position = Vector2(500, 0)
+shape = SubResource("RectangleShape2D_how8d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
