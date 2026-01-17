@@ -3,9 +3,11 @@ extends Sprite2D
 
 @export var rotation_speed: float = 5.0
 @export var cam: Camera2D
-@export var projectile: PackedScene
+var projectile: PackedScene
 @export var okay: Button
 @export var shot_info: RichTextLabel
+
+@export var bullets: Array[PackedScene]
 
 var can_fire = true
 
@@ -20,6 +22,7 @@ var info_Tdist = 0
 func _ready() -> void:
 	reset_firing()
 	okay.connect("pressed", reset_firing)
+	projectile = bullets[1]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +31,18 @@ func _process(delta: float) -> void:
 	#reset_camera()
 	try_reset_camera()
 	write_info()
+	if Input.is_key_pressed(KEY_0):
+		projectile = bullets[0]
+	if Input.is_key_pressed(KEY_1):
+		projectile = bullets[1]
+	if Input.is_key_pressed(KEY_2):
+		projectile = bullets[2]
+	if Input.is_key_pressed(KEY_3):
+		projectile = bullets[3]
+	if Input.is_key_pressed(KEY_4):
+		projectile = bullets[4]
+	if Input.is_key_pressed(KEY_5):
+		projectile = bullets[5]
 	
 func _physics_process(delta: float) -> void:
 	
@@ -47,6 +62,8 @@ func aiming():
 
 func reset_camera():
 	if cam.to_follow == null:
+		cam.position_smoothing_enabled = true
+		cam.position_smoothing_speed = 5
 		cam.to_follow = self
 		cam.cam_offset = Vector2(800, -600)
 
@@ -67,6 +84,9 @@ func try_fire():
 	
 	new_projectile.reparent(get_tree().current_scene)
 	cam.to_follow = new_projectile
+	cam.position_smoothing_speed = new_projectile.projectile_velocity / 200.0
+	if new_projectile.projectile_velocity > 20000:
+		cam.position_smoothing_enabled = false
 	cam.cam_offset = Vector2.ZERO
 	reset_in = 20 #arbitrary number (see func try_reset_camera)
 	tracking_bullet = new_projectile

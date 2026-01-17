@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c75ixqcu6nk5a"
-path="res://.godot/imported/placeholder tankj.png-f6d96ece34de808e18a77a8845902bc1.ctex"
+uid="uid://b6ei84gpml4l5"
+path="res://.godot/imported/lava.png-d46ce786b08b4f8c6df7d90b21db65a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite assets/placeholder tankj.png"
-dest_files=["res://.godot/imported/placeholder tankj.png-f6d96ece34de808e18a77a8845902bc1.ctex"]
+source_file="res://sprite assets/placeholders/lava.png"
+dest_files=["res://.godot/imported/lava.png-d46ce786b08b4f8c6df7d90b21db65a6.ctex"]
 
 [params]
 

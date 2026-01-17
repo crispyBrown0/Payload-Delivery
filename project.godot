@@ -19,6 +19,10 @@ run/main_scene="res://SCENES/root.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dep6dgr5f5tad"
+
 [autoload]
 
 Global="*res://scripts/global.gd"

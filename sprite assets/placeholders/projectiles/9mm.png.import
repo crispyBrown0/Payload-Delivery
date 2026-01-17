@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6ei84gpml4l5"
-path="res://.godot/imported/lava.png-a1eae7ef147f9194d22af77433e2ee59.ctex"
+uid="uid://1slsi86hqvrp"
+path="res://.godot/imported/9mm.png-3adbda2a0e508757228cdc438a538e78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite assets/lava.png"
-dest_files=["res://.godot/imported/lava.png-a1eae7ef147f9194d22af77433e2ee59.ctex"]
+source_file="res://sprite assets/placeholders/projectiles/9mm.png"
+dest_files=["res://.godot/imported/9mm.png-3adbda2a0e508757228cdc438a538e78.ctex"]
 
 [params]
 

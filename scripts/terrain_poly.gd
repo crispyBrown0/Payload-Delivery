@@ -11,7 +11,7 @@ func generate_terrain():
 	var scannery = m(100)
 	while scannerx > m(300):
 		new_terrain.append(Vector2(scannerx, scannery * (scannerx/km(10))))
-		scannerx -= m(randi_range(50, 250))
+		scannerx -= m(randi_range(50, 100))
 		scannery += m(randi_range(-100, 100))
 		if scannery > 250:
 			scannery = 250 - m(randi_range(0, 100))

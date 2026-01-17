@@ -16,7 +16,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if to_follow != null:
 		calc_offset()
+		#position = position.lerp(to_follow.position + current_offset, delta * 5)
 		position = to_follow.position + current_offset
+		
+		#position_smoothing_speed = 5
+		var smooth_distance = (get_target_position() - get_screen_center_position()).length()
 
 func calc_offset():
 	current_offset = cam_offset
