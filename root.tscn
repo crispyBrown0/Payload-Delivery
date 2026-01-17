@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=9 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://lava.png" id="1_jnlp7"]
 [ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://terrain_colli.gd" id="1_pyidc"]
-[ext_resource type="Script" path="res://terrain.gd" id="1_vvh5c"]
+[ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://terrain.gd" id="1_vvh5c"]
 [ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://terrain_poly.gd" id="2_vvh5c"]
 [ext_resource type="Texture2D" uid="uid://c7oqfngkfy332" path="res://icon.svg" id="4_28aoi"]
 [ext_resource type="Script" uid="uid://cixtg8s0rmx2q" path="res://player_weapon.gd" id="6_l8v81"]
+[ext_resource type="PackedScene" uid="uid://bmkerlxk4ys22" path="res://projectile.tscn" id="7_bf3um"]
+[ext_resource type="PackedScene" uid="uid://cu2p3duqsv2l5" path="res://enemy.tscn" id="7_vyht1"]
 
 [node name="Root" type="Node2D"]
 
@@ -43,10 +45,11 @@ texture = ExtResource("4_28aoi")
 position = Vector2(57, -53)
 texture = ExtResource("4_28aoi")
 script = ExtResource("6_l8v81")
+rotation_speed = 1.5
 
-[node name="Projectile" type="Sprite2D" parent="PlayerBase/PlayerWeapon"]
-
-[node name="Camera2D" type="Camera2D" parent="PlayerBase/PlayerWeapon/Projectile"]
-position = Vector2(148, -53)
+[node name="Projectile" parent="PlayerBase/PlayerWeapon" instance=ExtResource("7_bf3um")]
 
 [node name="Enemy" type="Sprite2D" parent="."]
+
+[node name="enemy" parent="." instance=ExtResource("7_vyht1")]
+position = Vector2(-206, -693)

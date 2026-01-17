@@ -1,12 +1,9 @@
-extends CollisionPolygon2D
-
-@export var terrain_poly: Polygon2D
-
+extends RigidBody2D
+@export var projectile_velocity: float = 2000
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if terrain_poly:
-		polygon = terrain_poly.polygon
+	freeze = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
