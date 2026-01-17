@@ -10,7 +10,8 @@ func _ready() -> void:
 	bitmap.create_from_image_alpha(sprite.texture.get_image())
 	#print(str(bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, sprite.texture.get_size()))))
 	collider.polygon = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, sprite.texture.get_size()))[0]
-	collider.position -= sprite.texture.get_size()/2
+	collider.position -= sprite.texture.get_size()/2 * sprite.scale
+	collider.scale = sprite.scale
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,7 +27,7 @@ func damage(amt: int):
 
 func die():
 	var new_explosion = explosion.instantiate()
-	new_explosion.scale = sprite.texture.get_size()/100.0
+	new_explosion.scale = sprite.texture.get_size()/100.0 * sprite.scale
 	add_child(new_explosion)
 	new_explosion.reparent(get_parent())
 	queue_free()
