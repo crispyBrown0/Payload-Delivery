@@ -52,6 +52,8 @@ func spawn_enemies():
 		amt = 3
 	if type == 1:
 		amt = 4
+	if type >= 7:
+		amt = 0
 	spawned = 0
 		
 
@@ -76,6 +78,7 @@ func pass_info():
 			if all_enemies[looking] == null:
 				all_enemies.remove_at(looking)
 				kills += 1
+				get_tree().current_scene.killd()
 			else:
 				if abs(all_enemies[looking].position.x-camx) < abs(closest_pos - camx) or closest_pos == 0:
 					closest_pos = all_enemies[looking].position.x
@@ -98,13 +101,17 @@ func follow_closest_enemy(didhit: bool):
 			if all_enemies[looking] == null:
 				all_enemies.remove_at(looking)
 				kills += 1
+				get_tree().current_scene.killd()
 			else:
 				if abs(all_enemies[looking].position.x-camx) < abs(closest_pos-camx) or closest_pos == 0:
 					closest_pos = all_enemies[looking].position.x
 					closest = looking
 				looking += 1
 	
-	camera.to_follow = all_enemies[closest]
+	if all_enemies.size() <= closest:
+		camera.to_follow = null
+	else:
+		camera.to_follow = all_enemies[closest]
 	camera.position_smoothing_speed = 5
 	camera.position_smoothing_enabled = true
 
@@ -118,7 +125,7 @@ func try_spawning():
 		var new_enemy  = enemy.instantiate()
 		#new_enemy.position = Vector2(lerp(distances[type].x, distances[type].y, i * 1.0 / amt) * 100, -500 * 100)
 		new_enemy.position = Vector2(randf_range(distances[type].x, distances[type].y) * 100, -500 * 100)
-		#print("spanwed at "+str(new_enemy.position))
+		#new_enemy.position = Vector2(1000, -50000)
 		new_enemy.get_node("sprite").texture = sprites[type]
 		var to_scale = scales[type]
 		if to_scale == 1:

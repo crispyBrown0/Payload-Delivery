@@ -26,6 +26,9 @@ func _process(delta: float) -> void:
 	delet_in -= delta
 	if delet_in <= 0:
 		pass#queue_free()
+		
+	if rotation_degrees > 15 and Engine.time_scale > 1:
+		pass#Engine.time_scale = 1
 
 func _physics_process(delta: float) -> void:
 	look_at(linear_velocity+ global_position)

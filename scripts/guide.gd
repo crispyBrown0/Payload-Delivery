@@ -23,6 +23,8 @@ func set_text():
 	
 	var wepname = playerwep.names[playerwep.WEAPON]
 	var vel = playerwep.velocities[playerwep.WEAPON]
+	if playerwep.WEAPON == 8:
+		vel = 100000
 	
 	text.text = "[font_size=64][center]\n" + str(wepname).to_upper() + "\n\n[font_size=32][left]\n[indent]"
 	var angle = 10

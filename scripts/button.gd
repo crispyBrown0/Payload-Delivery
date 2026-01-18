@@ -25,12 +25,20 @@ func exited():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	esc_settings()
+	toggle_ff_toggle()
 	
 func esc_settings():
 	if type != 1:
 		return
 	if Input.is_action_just_pressed("escape"):
 		clicked()
+func toggle_ff_toggle():
+	if type != 5:
+		return
+	if !button_pressed:
+		return
+	if Engine.time_scale == 1:
+		button_pressed = false
 
 func clicked():
 	match type:
@@ -49,3 +57,8 @@ func clicked():
 		4:
 			var new_guide = guide.instantiate()
 			add_child(new_guide)
+		5:
+			if button_pressed:
+				Engine.time_scale = 2
+			else:
+				Engine.time_scale = 1

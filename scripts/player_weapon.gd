@@ -26,7 +26,7 @@ func _ready() -> void:
 	okay.connect("pressed", reset_firing)
 	WEAPON = 1
 	
-	velocities = [2000, 1000, 2000, 5000, 7500, 10000, 20000, 30000, 2000]
+	velocities = [2000, 1000, 2000, 5000, 7500, 10000, 20000, 30000, 1000]
 	guns = [load("res://sprite assets/weapons/PlayerBase.png"),
 			load("res://sprite assets/weapons/RubberBand.png"),
 			load("res://sprite assets/weapons/BBGun.png"),
@@ -56,10 +56,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	aiming()
-	#if Input.is_action_just_pressed("debug_change_wep"):
-		#WEAPON += 1
-		#if WEAPON > 8:
-			#WEAPON = 0
+	#debug_guns()
+	
 	texture = guns[WEAPON]
 	
 	if !setted_parent:
@@ -74,7 +72,11 @@ func _process(delta: float) -> void:
 	if !minimap.visible and velocities[WEAPON] >= 10000:
 		minimap.visible = true
 	#minimap.visible = true
-	
+func debug_guns():
+	if Input.is_action_just_pressed("debug_change_wep"):
+		WEAPON += 1
+		if WEAPON > 8:
+			WEAPON = 0
 func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("fire") and !BUTTONS.mouse_on_ui:
@@ -99,11 +101,15 @@ func reset_camera():
 		cam.cam_offset = Vector2(800, -400)
 
 func try_fire():
-	if !can_fire:
+	if !can_fire or root.ammo <= 0:
 		return
 	
+	root.ammo -= 1
 	can_fire = false
 	okay.visible = true
+	if WEAPON == 8:
+		okay.visible = false
+		self_modulate = Color(1, 1, 1, 0)
 	
 	var new_projectile = projectile.instantiate()
 	new_projectile.projectile_velocity = velocities[WEAPON]
