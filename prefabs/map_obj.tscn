@@ -16,6 +16,7 @@ color_ramp = SubResource("Gradient_dmwk1")
 
 [node name="MapObj" type="TextureRect"]
 modulate = Color(1, 0, 0, 1)
+pivot_offset = Vector2(7.5, 7.5)
 texture = SubResource("NoiseTexture2D_h04ne")
 script = ExtResource("1_nauc4")
 

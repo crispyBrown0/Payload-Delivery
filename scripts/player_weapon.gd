@@ -51,7 +51,6 @@ func _ready() -> void:
 	if minimap == null:
 		minimap = get_tree().current_scene.get_node("UI LAYER/Control/map")
 	minimap.visible = false
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,7 +72,6 @@ func _process(delta: float) -> void:
 		new_mapi.set_col(Color.GREEN)
 		new_mapi.to_follow = self
 		add_child(new_mapi)
-	
 	
 func _physics_process(delta: float) -> void:
 	

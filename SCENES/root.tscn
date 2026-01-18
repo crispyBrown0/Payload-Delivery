@@ -223,3 +223,6 @@ enemy = ExtResource("7_6ejct")
 shot_info = NodePath("../UI LAYER/Control/shot info")
 camera = NodePath("../CAMERA")
 mapobj = ExtResource("11_35tqq")
+
+[node name="enemy" parent="." instance=ExtResource("7_6ejct")]
+position = Vector2(840, -586)
