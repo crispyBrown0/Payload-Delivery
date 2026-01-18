@@ -31,6 +31,7 @@ func _on_body_entered(body: Node) -> void:
 		var new_dirt = dirt_effect.instantiate()
 		new_dirt.position = Vector2.ZERO
 		new_dirt.emitting = true
+		new_dirt.didhit = true
 		add_child(new_dirt)
 		new_dirt.reparent(get_tree().current_scene)
 		new_dirt.rotation = 0

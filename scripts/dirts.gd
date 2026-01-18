@@ -1,6 +1,7 @@
 extends CPUParticles2D
 
 var timer = 0
+var didhit = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,5 +11,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	timer += delta
 	if timer > 2:
-		get_tree().current_scene.get_node("enemy spawner").follow_closest_enemy()
+		get_tree().current_scene.get_node("enemy spawner").follow_closest_enemy(didhit)
 		queue_free()
