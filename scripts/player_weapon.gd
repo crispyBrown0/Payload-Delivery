@@ -20,6 +20,18 @@ func _ready() -> void:
 	reset_firing()
 	okay.connect("pressed", reset_firing)
 	WEAPON = 1
+	
+	velocities = [2000, 1000, 2000, 5000, 7500, 10000, 20000, 35000, 2000]
+	guns = [load("res://sprite assets/weapons/PlayerBase.png"),
+			load("res://sprite assets/weapons/RubberBand.png"),
+			load("res://sprite assets/weapons/BBGun.png"),
+			load("res://sprite assets/weapons/9mm.png"),
+			load("res://sprite assets/weapons/50BMG.png"),
+			load("res://sprite assets/weapons/76mm Sherman.png"),
+			load("res://sprite assets/weapons/MBT cannon.png"),
+			load("res://sprite assets/weapons/Naval Gun.png"),
+			load("res://sprite assets/weapons/Unguided ICBM.png")
+			]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

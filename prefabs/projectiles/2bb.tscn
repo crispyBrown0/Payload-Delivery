@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf6mbcgntf0ay"]
+[gd_scene load_steps=3 format=3 uid="uid://dgs3tdjfbgpsa"]
 
 [ext_resource type="PackedScene" uid="uid://bmkerlxk4ys22" path="res://prefabs/projectiles/0projectile.tscn" id="1_ubo48"]
 [ext_resource type="Texture2D" uid="uid://c3cw7nfkigvh8" path="res://sprite assets/placeholders/projectiles/bb.png" id="2_sqlab"]
