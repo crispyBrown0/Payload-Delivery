@@ -6,7 +6,7 @@ func _ready() -> void:
 	pass#generate_terrain()
 
 func generate_terrain():
-	var new_terrain = [Vector2(km(-1),m(500)), Vector2(km(10),m(500))]
+	var new_terrain = [Vector2(km(-1),m(500)), Vector2(km(10),m(750))]
 	var scannerx = km(10)
 	var scannery = m(100)
 	while scannerx > m(300):

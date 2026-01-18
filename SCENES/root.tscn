@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=26 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://scripts/root.gd" id="1_ogkre"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dskso81wahcvh" path="res://sprite assets/weapons/9mm.png" id="19_a184q"]
 [ext_resource type="Script" uid="uid://drougtvv07es1" path="res://scripts/enemy_spawner.gd" id="20_i2fri"]
 [ext_resource type="Texture2D" uid="uid://3impbhiv1d63" path="res://sprite assets/weapons/76mm Sherman.png" id="21_juvyl"]
+[ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="21_pd5bg"]
 [ext_resource type="Texture2D" uid="uid://c77g1byv1ng3g" path="res://sprite assets/weapons/MBT cannon.png" id="22_2b2bk"]
 [ext_resource type="Texture2D" uid="uid://bpst33f7w880" path="res://sprite assets/weapons/Unguided ICBM.png" id="23_41goc"]
 
@@ -72,7 +73,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerBase" type="Sprite2D" parent="."]
-position = Vector2(68, -86)
+position = Vector2(68, -125)
+rotation = -0.17453292
 texture = ExtResource("6_eshlv")
 
 [node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase" node_paths=PackedStringArray("cam", "okay", "shot_info")]
@@ -89,9 +91,6 @@ okay = NodePath("../../UI LAYER/Control/okay")
 shot_info = NodePath("../../UI LAYER/Control/shot info")
 velocities = Array[int]([2000, 1000, 2000, 5000, 7500, 10000, 20000, 35000, 2000])
 guns = Array[Texture2D]([ExtResource("16_h04ne"), ExtResource("17_2masc"), ExtResource("18_f7ifb"), ExtResource("19_a184q"), ExtResource("7_ep8ct"), ExtResource("21_juvyl"), ExtResource("22_2b2bk"), ExtResource("8_ogkre"), ExtResource("23_41goc")])
-
-[node name="enemy" parent="." instance=ExtResource("7_6ejct")]
-position = Vector2(1102, -421)
 
 [node name="UI LAYER" type="CanvasLayer" parent="."]
 
@@ -137,6 +136,8 @@ offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("21_pd5bg")
+theme_override_font_sizes/font_size = 32
 text = "OKAY"
 
 [node name="settings" type="Button" parent="UI LAYER/Control"]
@@ -155,6 +156,19 @@ text = "SETTINGS"
 script = ExtResource("10_uqopg")
 type = 1
 settings = ExtResource("11_sp5yh")
+
+[node name="range guide" type="Button" parent="UI LAYER/Control"]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 574.0
+offset_right = 1480.0
+offset_bottom = 674.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("21_pd5bg")
+theme_override_font_sizes/font_size = 32
+text = "RANGE GUIDE"
+script = ExtResource("10_uqopg")
+type = 4
 
 [node name="enemy spawner" type="Node2D" parent="." node_paths=PackedStringArray("shot_info", "camera")]
 script = ExtResource("20_i2fri")

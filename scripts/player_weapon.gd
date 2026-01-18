@@ -14,6 +14,7 @@ var WEAPON = 0
 var can_fire = true
 
 var reset_in = -1
+var setted_parent = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +34,7 @@ func _ready() -> void:
 			load("res://sprite assets/weapons/Unguided ICBM.png")
 			]
 	projectile = load("res://prefabs/projectiles/0projectile.tscn")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,10 +48,14 @@ func _process(delta: float) -> void:
 			WEAPON = 0
 	texture = guns[WEAPON]
 	
+	if !setted_parent:
+		reparent(get_tree().current_scene)
+		setted_parent = true
+	
 	
 func _physics_process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_just_pressed("fire") and !BUTTONS.mouse_on_ui:
 		try_fire()
 
 
@@ -68,7 +74,7 @@ func reset_camera():
 		cam.position_smoothing_enabled = true
 		cam.position_smoothing_speed = 5
 		cam.to_follow = self
-		cam.cam_offset = Vector2(800, -600)
+		cam.cam_offset = Vector2(800, -400)
 
 func try_fire():
 	if !can_fire:

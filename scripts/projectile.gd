@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var hi_speed: bool
 @export var dirt_effect: PackedScene
 var dmg = 1
+var timer = 0
 
 
 func _ready() -> void:
