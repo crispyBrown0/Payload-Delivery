@@ -56,12 +56,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	aiming()
-	#reset_camera()
-	#try_reset_camera()
-	if Input.is_action_just_pressed("debug_change_wep"):
-		WEAPON += 1
-		if WEAPON > 8:
-			WEAPON = 0
+	#if Input.is_action_just_pressed("debug_change_wep"):
+		#WEAPON += 1
+		#if WEAPON > 8:
+			#WEAPON = 0
 	texture = guns[WEAPON]
 	
 	if !setted_parent:
@@ -72,6 +70,10 @@ func _process(delta: float) -> void:
 		new_mapi.set_col(Color.GREEN)
 		new_mapi.to_follow = self
 		add_child(new_mapi)
+		
+	if !minimap.visible and velocities[WEAPON] >= 10000:
+		minimap.visible = true
+	#minimap.visible = true
 	
 func _physics_process(delta: float) -> void:
 	
@@ -127,8 +129,8 @@ func try_fire():
 	new_mapb.pulsing = true
 	add_child(new_mapb)
 	
-	if velocities[WEAPON] >= 10000:
-		minimap.visible = true
+	#if velocities[WEAPON] >= 10000:
+		#minimap.visible = true
 	
 	
 	#new_projectile.global_transform = current_projectile.global_transform
@@ -148,7 +150,6 @@ func reset_firing():
 	reset_camera()
 	okay.visible = false
 	can_fire = true
-	shot_info.visible = true
+	#shot_info.visible = true
 	shot_info.dist_tracked = 0
-	minimap.visible = false
-	#shot_info.last_known_bullet_x = 0
+	#minimap.visible = false

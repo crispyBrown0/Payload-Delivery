@@ -2,19 +2,21 @@
 
 [ext_resource type="Script" uid="uid://c67gdjd4u06pv" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="PackedScene" uid="uid://dbcqta5ct6hj" path="res://prefabs/explosion.tscn" id="2_iifgy"]
-[ext_resource type="Texture2D" uid="uid://btq8wqp7i465m" path="res://sprite assets/enemies/TigerTank.png" id="3_cypye"]
+[ext_resource type="Texture2D" uid="uid://dx2iyckcatx6b" path="res://sprite assets/enemies/BattleshipYamoto.png" id="3_cypye"]
 
 [node name="enemy" type="RigidBody2D"]
 center_of_mass_mode = 1
+contact_monitor = true
 script = ExtResource("1_4gyqm")
 explosion = ExtResource("2_iifgy")
 
 [node name="sprite" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
 texture = ExtResource("3_cypye")
 
 [node name="collider" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 0, 100, 0, 50, 50)
 
 [node name="DOWNRAY" type="RayCast2D" parent="."]
-target_position = Vector2(0, 100000)
+target_position = Vector2(0, 500000)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

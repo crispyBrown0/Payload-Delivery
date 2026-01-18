@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=41 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://scripts/root.gd" id="1_ogkre"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bpst33f7w880" path="res://sprite assets/weapons/Unguided ICBM.png" id="23_41goc"]
 [ext_resource type="PackedScene" uid="uid://cytwnrhevh3ak" path="res://prefabs/guide.tscn" id="24_7cqg0"]
 [ext_resource type="Script" uid="uid://b54ja1fewxrjm" path="res://scripts/map.gd" id="25_dmwk1"]
+[ext_resource type="Script" uid="uid://cf2hg7na5ny3m" path="res://scripts/level_slider.gd" id="27_h04ne"]
 
 [sub_resource type="Gradient" id="Gradient_7cqg0"]
 colors = PackedColorArray(0.851769, 0.8517689, 0.85176885, 1, 1, 1, 1, 1)
@@ -40,6 +41,32 @@ width = 100
 height = 100
 noise = SubResource("FastNoiseLite_7cqg0")
 color_ramp = SubResource("Gradient_7cqg0")
+
+[sub_resource type="ImageTexture" id="ImageTexture_35tqq"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_h04ne"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_2masc"]
+
+[sub_resource type="Gradient" id="Gradient_35tqq"]
+offsets = PackedFloat32Array(0, 0.4047619)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h04ne"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2masc"]
+width = 5
+height = 10
+noise = SubResource("FastNoiseLite_h04ne")
+color_ramp = SubResource("Gradient_35tqq")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_f7ifb"]
+color = Color(1, 1, 1, 1)
+thickness = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a184q"]
+bg_color = Color(0.05000007, 1, 0, 1)
+expand_margin_right = 15.0
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_ogkre")
@@ -217,12 +244,59 @@ text = "	GAME MAP"
 fit_content = true
 autowrap_mode = 0
 
+[node name="levelSlider" type="HSlider" parent="UI LAYER/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -177.5
+offset_top = -130.0
+offset_right = 177.5
+offset_bottom = -92.99988
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 2)
+theme_override_icons/grabber = SubResource("ImageTexture_35tqq")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_h04ne")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_2masc")
+theme_override_icons/tick = SubResource("NoiseTexture2D_2masc")
+theme_override_styles/slider = SubResource("StyleBoxLine_f7ifb")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_a184q")
+max_value = 3.0
+step = 0.01
+editable = false
+scrollable = false
+tick_count = 4
+ticks_on_borders = true
+ticks_position = 2
+script = ExtResource("27_h04ne")
+
+[node name="levelLabel" type="RichTextLabel" parent="UI LAYER/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -60.0
+offset_right = 250.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("21_pd5bg")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Level 1: Rubber Band"
+autowrap_mode = 0
+horizontal_alignment = 1
+
 [node name="enemy spawner" type="Node2D" parent="." node_paths=PackedStringArray("shot_info", "camera")]
 script = ExtResource("20_i2fri")
 enemy = ExtResource("7_6ejct")
 shot_info = NodePath("../UI LAYER/Control/shot info")
 camera = NodePath("../CAMERA")
 mapobj = ExtResource("11_35tqq")
-
-[node name="enemy" parent="." instance=ExtResource("7_6ejct")]
-position = Vector2(840, -586)
