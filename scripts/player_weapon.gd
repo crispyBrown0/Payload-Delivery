@@ -39,7 +39,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	aiming()
 	#reset_camera()
-	try_reset_camera()
+	#try_reset_camera()
 	if Input.is_action_just_pressed("debug_change_wep"):
 		WEAPON += 1
 		if WEAPON > 8:
@@ -95,6 +95,7 @@ func try_fire():
 	#reset_in = 20 #arbitrary number (see func try_reset_camera)
 	shot_info.tracking_bullet = new_projectile
 	
+	
 	#new_projectile.global_transform = current_projectile.global_transform
 	#new_projectile.freeze = false
 	#new_projectile.linear_velocity = Vector2.RIGHT.rotated(global_rotation) * current_projectile.projectile_velocity
@@ -114,3 +115,4 @@ func reset_firing():
 	can_fire = true
 	shot_info.visible = true
 	shot_info.dist_tracked = 0
+	shot_info.last_known_bullet_x = 0

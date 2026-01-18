@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 
 func pass_info():
 	var closest_pos = 0
+	var camx = camera.get_screen_center_position().x
 	
 	if all_enemies.size() > 0:
 		closest_pos = 0
@@ -32,24 +33,29 @@ func pass_info():
 			if all_enemies[looking] == null:
 				all_enemies.remove_at(looking)
 			else:
-				if all_enemies[looking].position.x < closest_pos or closest_pos == 0:
+				if abs(all_enemies[looking].position.x-camx) < abs(closest_pos - camx) or closest_pos == 0:
 					closest_pos = all_enemies[looking].position.x
 				looking += 1
 	
 	shot_info.enemy_x = closest_pos
 
-func follow_closest_enemy():
+func follow_closest_enemy(didhit: bool):
 
 	if all_enemies.size() < 0 or camera.to_follow != null:
 		return
 	var looking = 0
 	var closest_pos = 0
 	var closest = 0
+	var camx = 0
+	
+	if !didhit: #if missed an enemy, find the closest to where the bullet landed
+		camx = camera.get_screen_center_position().x
+	
 	while looking < all_enemies.size():
 			if all_enemies[looking] == null:
 				all_enemies.remove_at(looking)
 			else:
-				if all_enemies[looking].position.x < closest_pos or closest_pos == 0:
+				if abs(all_enemies[looking].position.x-camx) < abs(closest_pos-camx) or closest_pos == 0:
 					closest_pos = all_enemies[looking].position.x
 					closest = looking
 				looking += 1

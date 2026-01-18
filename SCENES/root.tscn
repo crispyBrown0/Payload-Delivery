@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
-[ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://SCENES/root.gd" id="1_ogkre"]
+[ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://scripts/root.gd" id="1_ogkre"]
 [ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://scripts/terrain.gd" id="2_hoix4"]
 [ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://scripts/terrain_poly.gd" id="3_ak04c"]
 [ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://scripts/terrain_colli.gd" id="4_uqopg"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://nm8liduecj4y" path="res://scripts/shot_info.gd" id="17_ep8ct"]
 [ext_resource type="Texture2D" uid="uid://b2fxeeyki0vep" path="res://sprite assets/weapons/BBGun.png" id="18_f7ifb"]
 [ext_resource type="Texture2D" uid="uid://dskso81wahcvh" path="res://sprite assets/weapons/9mm.png" id="19_a184q"]
-[ext_resource type="Script" uid="uid://drougtvv07es1" path="res://SCENES/enemy_spawner.gd" id="20_i2fri"]
+[ext_resource type="Script" uid="uid://drougtvv07es1" path="res://scripts/enemy_spawner.gd" id="20_i2fri"]
 [ext_resource type="Texture2D" uid="uid://3impbhiv1d63" path="res://sprite assets/weapons/76mm Sherman.png" id="21_juvyl"]
 [ext_resource type="Texture2D" uid="uid://c77g1byv1ng3g" path="res://sprite assets/weapons/MBT cannon.png" id="22_2b2bk"]
 [ext_resource type="Texture2D" uid="uid://bpst33f7w880" path="res://sprite assets/weapons/Unguided ICBM.png" id="23_41goc"]
