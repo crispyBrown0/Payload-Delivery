@@ -17,11 +17,8 @@ func _ready() -> void:
 		#$"hi-speeds".disabled = false
 	#else:
 		#$"hi-speeds".disabled = true
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func set_sprite(newsprite: Texture2D):
+	$Sprite2D.texture = newsprite
 
 func _physics_process(delta: float) -> void:
 	look_at(linear_velocity+ global_position)

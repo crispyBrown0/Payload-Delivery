@@ -9,5 +9,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer += delta
-	if timer > 2.5:
-		
+	if timer > 2:
+		get_tree().current_scene.get_node("enemy spawner").follow_closest_enemy()
+		queue_free()

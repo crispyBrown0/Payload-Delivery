@@ -39,7 +39,8 @@ func pass_info():
 	shot_info.enemy_x = closest_pos
 
 func follow_closest_enemy():
-	if all_enemies.size() < 0:
+
+	if all_enemies.size() < 0 or camera.to_follow != null:
 		return
 	var looking = 0
 	var closest_pos = 0

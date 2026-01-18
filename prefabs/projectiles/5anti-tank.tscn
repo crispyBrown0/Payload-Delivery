@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b85g57iooaxn6"]
 
 [ext_resource type="PackedScene" uid="uid://bmkerlxk4ys22" path="res://prefabs/projectiles/0projectile.tscn" id="1_fdwtl"]
-[ext_resource type="Texture2D" uid="uid://bbo21r514npdg" path="res://sprite assets/placeholders/anti-tank.png" id="2_h116b"]
+[ext_resource type="Texture2D" uid="uid://bbo21r514npdg" path="res://sprite assets/placeholders/projectiles/anti-tank.png" id="2_h116b"]
 
 [node name="Projectile" instance=ExtResource("1_fdwtl")]
 projectile_velocity = 10000.0

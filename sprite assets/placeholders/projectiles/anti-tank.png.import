@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbo21r514npdg"
-path="res://.godot/imported/anti-tank.png-1bcd7e87f9e4983a3b850d81f2b0e04f.ctex"
+path="res://.godot/imported/anti-tank.png-1c80b966a6cc35cd79575a55a1f7bfec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprite assets/placeholders/anti-tank.png"
-dest_files=["res://.godot/imported/anti-tank.png-1bcd7e87f9e4983a3b850d81f2b0e04f.ctex"]
+source_file="res://sprite assets/placeholders/projectiles/anti-tank.png"
+dest_files=["res://.godot/imported/anti-tank.png-1c80b966a6cc35cd79575a55a1f7bfec.ctex"]
 
 [params]
 

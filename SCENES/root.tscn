@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=25 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://SCENES/root.gd" id="1_ogkre"]
@@ -11,16 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://jbedd4uk5rsp" path="res://sprite assets/weapons/50BMG.png" id="7_ep8ct"]
 [ext_resource type="PackedScene" uid="uid://bmkerlxk4ys22" path="res://prefabs/projectiles/0projectile.tscn" id="7_hoix4"]
 [ext_resource type="Script" uid="uid://1seu65c3kr8y" path="res://scripts/camera.gd" id="8_ofq0x"]
-[ext_resource type="PackedScene" uid="uid://bj8sm5vvy876j" path="res://prefabs/projectiles/1rubber band.tscn" id="9_pbyad"]
-[ext_resource type="PackedScene" uid="uid://bf6mbcgntf0ay" path="res://prefabs/projectiles/2bb.tscn" id="10_6ejct"]
+[ext_resource type="Texture2D" uid="uid://32etxd7a35f2" path="res://sprite assets/weapons/Naval Gun.png" id="8_ogkre"]
 [ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="10_uqopg"]
-[ext_resource type="PackedScene" uid="uid://b5a113anhrt2p" path="res://prefabs/projectiles/39mm.tscn" id="11_ofq0x"]
 [ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://SCENES/settings.tscn" id="11_sp5yh"]
-[ext_resource type="PackedScene" uid="uid://cjo8t0pyhk67m" path="res://prefabs/projectiles/450cal.tscn" id="12_aug8v"]
 [ext_resource type="FontFile" uid="uid://bhcly8fa3dvsu" path="res://font/BunkerStencil-Regular.otf" id="12_sp5yh"]
-[ext_resource type="PackedScene" uid="uid://b85g57iooaxn6" path="res://prefabs/projectiles/5anti-tank.tscn" id="13_srn3p"]
+[ext_resource type="Texture2D" uid="uid://c7oqfngkfy332" path="res://icon.svg" id="16_h04ne"]
+[ext_resource type="Texture2D" uid="uid://be6npwkmopbrr" path="res://sprite assets/weapons/RubberBand.png" id="17_2masc"]
 [ext_resource type="Script" uid="uid://nm8liduecj4y" path="res://scripts/shot_info.gd" id="17_ep8ct"]
+[ext_resource type="Texture2D" uid="uid://b2fxeeyki0vep" path="res://sprite assets/weapons/BBGun.png" id="18_f7ifb"]
+[ext_resource type="Texture2D" uid="uid://dskso81wahcvh" path="res://sprite assets/weapons/9mm.png" id="19_a184q"]
 [ext_resource type="Script" uid="uid://drougtvv07es1" path="res://SCENES/enemy_spawner.gd" id="20_i2fri"]
+[ext_resource type="Texture2D" uid="uid://3impbhiv1d63" path="res://sprite assets/weapons/76mm Sherman.png" id="21_juvyl"]
+[ext_resource type="Texture2D" uid="uid://c77g1byv1ng3g" path="res://sprite assets/weapons/MBT cannon.png" id="22_2b2bk"]
+[ext_resource type="Texture2D" uid="uid://bpst33f7w880" path="res://sprite assets/weapons/Unguided ICBM.png" id="23_41goc"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_ogkre")
@@ -75,15 +78,17 @@ texture = ExtResource("6_eshlv")
 [node name="PlayerWeapon" type="Sprite2D" parent="PlayerBase" node_paths=PackedStringArray("cam", "okay", "shot_info")]
 z_index = -1
 position = Vector2(155, 35)
-texture = ExtResource("7_ep8ct")
+texture = ExtResource("8_ogkre")
 offset = Vector2(-97, -162)
 hframes = 2
 script = ExtResource("6_pbyad")
 rotation_speed = 1.5
 cam = NodePath("../../CAMERA")
+projectile = ExtResource("7_hoix4")
 okay = NodePath("../../UI LAYER/Control/okay")
 shot_info = NodePath("../../UI LAYER/Control/shot info")
-bullets = Array[PackedScene]([ExtResource("7_hoix4"), ExtResource("9_pbyad"), ExtResource("10_6ejct"), ExtResource("11_ofq0x"), ExtResource("12_aug8v"), ExtResource("13_srn3p")])
+velocities = Array[int]([2000, 1000, 2000, 5000, 7500, 10000, 20000, 35000, 2000])
+guns = Array[Texture2D]([ExtResource("16_h04ne"), ExtResource("17_2masc"), ExtResource("18_f7ifb"), ExtResource("19_a184q"), ExtResource("7_ep8ct"), ExtResource("21_juvyl"), ExtResource("22_2b2bk"), ExtResource("8_ogkre"), ExtResource("23_41goc")])
 
 [node name="enemy" parent="." instance=ExtResource("7_6ejct")]
 position = Vector2(1102, -421)
@@ -151,7 +156,8 @@ script = ExtResource("10_uqopg")
 type = 1
 settings = ExtResource("11_sp5yh")
 
-[node name="enemy spawner" type="Node2D" parent="." node_paths=PackedStringArray("shot_info")]
+[node name="enemy spawner" type="Node2D" parent="." node_paths=PackedStringArray("shot_info", "camera")]
 script = ExtResource("20_i2fri")
 enemy = ExtResource("7_6ejct")
 shot_info = NodePath("../UI LAYER/Control/shot info")
+camera = NodePath("../CAMERA")

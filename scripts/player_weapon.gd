@@ -3,11 +3,13 @@ extends Sprite2D
 
 @export var rotation_speed: float = 5.0
 @export var cam: Camera2D
-var projectile: PackedScene
+@export var projectile: PackedScene
 @export var okay: Button
 @export var shot_info: RichTextLabel
 
-@export var bullets: Array[PackedScene]
+var WEAPON = 0
+@export var velocities: Array[int]
+@export var guns: Array[Texture2D]
 
 var can_fire = true
 
@@ -17,7 +19,7 @@ var reset_in = -1
 func _ready() -> void:
 	reset_firing()
 	okay.connect("pressed", reset_firing)
-	projectile = bullets[1]
+	WEAPON = 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,18 +27,12 @@ func _process(delta: float) -> void:
 	aiming()
 	#reset_camera()
 	try_reset_camera()
-	if Input.is_key_pressed(KEY_0):
-		projectile = bullets[0]
-	if Input.is_key_pressed(KEY_1):
-		projectile = bullets[1]
-	if Input.is_key_pressed(KEY_2):
-		projectile = bullets[2]
-	if Input.is_key_pressed(KEY_3):
-		projectile = bullets[3]
-	if Input.is_key_pressed(KEY_4):
-		projectile = bullets[4]
-	if Input.is_key_pressed(KEY_5):
-		projectile = bullets[5]
+	if Input.is_action_just_pressed("debug_change_wep"):
+		WEAPON += 1
+		if WEAPON > 8:
+			WEAPON = 0
+	texture = guns[WEAPON]
+	
 	
 func _physics_process(delta: float) -> void:
 	
@@ -69,7 +65,8 @@ func try_fire():
 	okay.visible = true
 	
 	var new_projectile = projectile.instantiate()
-	#get_tree().root.add_child(new_projectile)
+	new_projectile.projectile_velocity = velocities[WEAPON]
+	new_projectile.set_sprite(guns[WEAPON])
 	add_child(new_projectile)
 	
 	new_projectile.position = Vector2.ZERO
