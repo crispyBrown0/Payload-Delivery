@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://t2w8dybbyfqp"]
+
+[ext_resource type="Script" uid="uid://c5bcjgnwiad52" path="res://SCENES/map_obj.gd" id="1_nauc4"]
+
+[sub_resource type="Gradient" id="Gradient_dmwk1"]
+colors = PackedColorArray(0.55295557, 0.5529556, 0.55295515, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_35tqq"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h04ne"]
+width = 15
+height = 15
+noise = SubResource("FastNoiseLite_35tqq")
+color_ramp = SubResource("Gradient_dmwk1")
+
+[node name="MapObj" type="TextureRect"]
+modulate = Color(1, 0, 0, 1)
+texture = SubResource("NoiseTexture2D_h04ne")
+script = ExtResource("1_nauc4")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

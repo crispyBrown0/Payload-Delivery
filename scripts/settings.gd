@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 	var new_layer = CanvasLayer.new()
 	get_tree().current_scene.add_child(new_layer)
-	new_layer.layer = 2
+	new_layer.layer = 3
 	
 	reparent(new_layer)
 	

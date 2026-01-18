@@ -6,6 +6,7 @@ extends RigidBody2D
 @export var dirt_effect: PackedScene
 var dmg = 1
 var timer = 0
+var delet_in = 120
 
 
 func _ready() -> void:
@@ -21,8 +22,22 @@ func _ready() -> void:
 func set_sprite(newsprite: Texture2D):
 	$Sprite2D.texture = newsprite
 
+func _process(delta: float) -> void:
+	delet_in -= delta
+	if delet_in <= 0:
+		pass#queue_free()
+
 func _physics_process(delta: float) -> void:
 	look_at(linear_velocity+ global_position)
+	if position.y > 500 * 100:
+		var new_dirt = dirt_effect.instantiate()
+		new_dirt.position = Vector2.ZERO
+		new_dirt.emitting = true
+		new_dirt.didhit = false
+		add_child(new_dirt)
+		new_dirt.reparent(get_tree().current_scene)
+		new_dirt.rotation = 0
+		queue_free()
 
 
 func _on_body_entered(body: Node) -> void:
@@ -32,7 +47,7 @@ func _on_body_entered(body: Node) -> void:
 		var new_dirt = dirt_effect.instantiate()
 		new_dirt.position = Vector2.ZERO
 		new_dirt.emitting = true
-		new_dirt.didhit = true
+		new_dirt.didhit = false
 		add_child(new_dirt)
 		new_dirt.reparent(get_tree().current_scene)
 		new_dirt.rotation = 0

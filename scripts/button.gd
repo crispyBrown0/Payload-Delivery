@@ -45,7 +45,7 @@ func clicked():
 			get_tree().quit()
 		3:
 			get_tree().paused = false
-			get_parent().queue_free()
+			get_parent().get_parent().queue_free()
 		4:
 			var new_guide = guide.instantiate()
 			add_child(new_guide)

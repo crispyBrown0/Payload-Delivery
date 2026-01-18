@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cytwnrhevh3ak"]
+
+[ext_resource type="Texture2D" uid="uid://ckh6r3nln4xya" path="res://sprite assets/paper.png" id="1_owepu"]
+[ext_resource type="Script" uid="uid://caecn0egkrmip" path="res://scripts/guide.gd" id="2_ugeoe"]
+[ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="3_ksfvy"]
+[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="4_2avfd"]
+
+[node name="guide" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 140.0
+offset_top = -350.0
+offset_right = 640.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_owepu")
+script = ExtResource("2_ugeoe")
+
+[node name="guide text" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_ksfvy")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[font_size=64][center]
+WEAPON NAME
+
+[font_size=32][left]
+[indent]10 DEGREES..................................................5.5 km
+
+20 DEGREES
+
+30 DEGREES
+
+40 DEGREES
+
+45 DEGREES
+
+
+[/indent][center]ESTIMATES FOR FLAT GROUND ONLY
+RESULTS NOT GUARANTEED"
+fit_content = true
+autowrap_mode = 0
+tab_size = 8
+horizontal_alignment = 2
+
+[node name="close guide" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 94.0
+offset_bottom = 59.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ksfvy")
+theme_override_font_sizes/font_size = 32
+text = "CLOSE"
+script = ExtResource("4_2avfd")
+type = 3

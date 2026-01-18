@@ -6,10 +6,14 @@ extends Sprite2D
 @export var projectile: PackedScene
 @export var okay: Button
 @export var shot_info: RichTextLabel
+@export var minimap: Control
+
+@export var map_bullet: PackedScene
 
 var WEAPON = 0
 @export var velocities: Array[int]
 @export var guns: Array[Texture2D]
+var names: Array[String]
 
 var can_fire = true
 
@@ -22,7 +26,7 @@ func _ready() -> void:
 	okay.connect("pressed", reset_firing)
 	WEAPON = 1
 	
-	velocities = [2000, 1000, 2000, 5000, 7500, 10000, 20000, 35000, 2000]
+	velocities = [2000, 1000, 2000, 5000, 7500, 10000, 20000, 30000, 2000]
 	guns = [load("res://sprite assets/weapons/PlayerBase.png"),
 			load("res://sprite assets/weapons/RubberBand.png"),
 			load("res://sprite assets/weapons/BBGun.png"),
@@ -34,6 +38,19 @@ func _ready() -> void:
 			load("res://sprite assets/weapons/Unguided ICBM.png")
 			]
 	projectile = load("res://prefabs/projectiles/0projectile.tscn")
+	names = ["Placeholder",
+			"Rubber Band",
+			"BB Gun",
+			"9 mm",
+			".50 BMG Rifle",
+			"Sherman Tank Gun",
+			"MBT Cannon",
+			"Naval Turret",
+			"Ballistic Missile"]
+	
+	if minimap == null:
+		minimap = get_tree().current_scene.get_node("UI LAYER/Control/map")
+	minimap.visible = false
 	
 
 
@@ -51,6 +68,11 @@ func _process(delta: float) -> void:
 	if !setted_parent:
 		reparent(get_tree().current_scene)
 		setted_parent = true
+		
+		var new_mapi = map_bullet.instantiate()
+		new_mapi.set_col(Color.GREEN)
+		new_mapi.to_follow = self
+		add_child(new_mapi)
 	
 	
 func _physics_process(delta: float) -> void:
@@ -101,6 +123,15 @@ func try_fire():
 	#reset_in = 20 #arbitrary number (see func try_reset_camera)
 	shot_info.tracking_bullet = new_projectile
 	
+	var new_mapb = map_bullet.instantiate()
+	new_mapb.set_col(Color.GOLDENROD)
+	new_mapb.to_follow = new_projectile
+	new_mapb.pulsing = true
+	add_child(new_mapb)
+	
+	if velocities[WEAPON] >= 10000:
+		minimap.visible = true
+	
 	
 	#new_projectile.global_transform = current_projectile.global_transform
 	#new_projectile.freeze = false
@@ -121,4 +152,5 @@ func reset_firing():
 	can_fire = true
 	shot_info.visible = true
 	shot_info.dist_tracked = 0
-	shot_info.last_known_bullet_x = 0
+	minimap.visible = false
+	#shot_info.last_known_bullet_x = 0

@@ -3,6 +3,7 @@ extends Node2D
 @export var enemy: PackedScene
 @export var shot_info: RichTextLabel
 @export var camera: Camera2D
+@export var mapobj: PackedScene
 
 var all_enemies: Array
 
@@ -16,6 +17,11 @@ func spawn_enemies():
 		add_child(new_enemy)
 		
 		all_enemies.append(new_enemy)
+		
+		var new_mape = mapobj.instantiate()
+		new_mape.set_col(Color.RED)
+		new_mape.to_follow = new_enemy
+		add_child(new_mape)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,7 +46,7 @@ func pass_info():
 	shot_info.enemy_x = closest_pos
 
 func follow_closest_enemy(didhit: bool):
-
+	print("called")
 	if all_enemies.size() < 0 or camera.to_follow != null:
 		return
 	var looking = 0
