@@ -88,3 +88,21 @@ theme_override_font_sizes/font_size = 75
 text = "CLOSE"
 script = ExtResource("2_3ykye")
 type = 3
+
+[node name="main menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1367.0
+offset_top = 138.0
+offset_right = 1675.0
+offset_bottom = 218.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_nkug2")
+theme_override_font_sizes/font_size = 75
+text = "MAIN MENU"
+script = ExtResource("2_3ykye")
+type = 6
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 25.0

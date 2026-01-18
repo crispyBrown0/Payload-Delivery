@@ -12,6 +12,7 @@ class_name root
 @onready var message = $"UI LAYER/Control/tutorial"
 
 static var ammo = 10
+var debug_level = 0
 
 func _ready() -> void:
 	$MAP/Terrain/TerrainPoly.generate_terrain()
@@ -56,7 +57,7 @@ func do_next_waves():
 	if enemy_spawner.type >= 7:
 		return
 	
-	if enemy_spawner.kills >= 3 or enemy_spawner.type < 6:
+	if enemy_spawner.kills >= 3 or enemy_spawner.type < debug_level:
 		enemy_spawner.type += 1
 		level_slider.level_up()
 		enemy_spawner.wipe_all()

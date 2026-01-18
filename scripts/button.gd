@@ -62,3 +62,6 @@ func clicked():
 				Engine.time_scale = 2
 			else:
 				Engine.time_scale = 1
+		6:
+			get_tree().paused = false
+			get_tree().change_scene_to_file("res://SCENES/mainmen.tscn")
