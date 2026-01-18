@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="4_2avfd"]
 
 [node name="guide" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0.39215687)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
