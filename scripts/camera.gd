@@ -14,6 +14,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Engine.time_scale > 1:
+		position_smoothing_enabled = false
 	if to_follow != null:
 		calc_offset()
 		#position = position.lerp(to_follow.position + current_offset, delta * 5)

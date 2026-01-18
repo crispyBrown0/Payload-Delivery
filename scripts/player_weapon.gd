@@ -101,10 +101,10 @@ func reset_camera():
 		cam.cam_offset = Vector2(800, -400)
 
 func try_fire():
-	if !can_fire or root.ammo <= 0:
+	if !can_fire:
 		return
 	
-	root.ammo -= 1
+	root.ammo += 1
 	can_fire = false
 	okay.visible = true
 	if WEAPON == 8:
@@ -123,7 +123,7 @@ func try_fire():
 	new_projectile.reparent(get_tree().current_scene)
 	cam.to_follow = new_projectile
 	cam.position_smoothing_speed = new_projectile.projectile_velocity / 200.0
-	if new_projectile.projectile_velocity > 20000:
+	if new_projectile.projectile_velocity > 20000 or Engine.time_scale > 1:
 		cam.position_smoothing_enabled = false
 	cam.cam_offset = Vector2.ZERO
 	#reset_in = 20 #arbitrary number (see func try_reset_camera)

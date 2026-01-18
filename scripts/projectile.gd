@@ -44,6 +44,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+	if Engine.time_scale > 1:
+		Engine.time_scale = 1
+	
 	if body.has_method("damage"):
 		body.damage(dmg)
 	else:

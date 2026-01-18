@@ -38,7 +38,8 @@ func _process(delta: float) -> void:
 		ff_button.visible = true
 	
 	do_next_waves()
-	ammo_text.text = "Ammo: "+str(ammo)
+	#ammo_text.text = "Ammo: "+str(ammo)
+	ammo_text.visible = false
 	
 	if ammo <= 3:
 		ammo_text.modulate = Color.RED
@@ -55,11 +56,10 @@ func do_next_waves():
 	if enemy_spawner.type >= 7:
 		return
 	
-	if enemy_spawner.kills >= 3:
+	if enemy_spawner.kills >= 3 or enemy_spawner.type < 6:
 		enemy_spawner.type += 1
 		level_slider.level_up()
 		enemy_spawner.wipe_all()
-		ammo = 10
 		message.text = "Level Up!"
 		message.reset()
 		wep.WEAPON += 1
@@ -75,6 +75,5 @@ func do_next_waves():
 
 func killd():
 	if enemy_spawner.kills < 3:
-		message.text = "HIT! +1 Ammo!"
+		message.text = "HIT!"
 		message.reset()
-		ammo += 1
