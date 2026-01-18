@@ -39,12 +39,20 @@ func pass_info():
 	shot_info.enemy_x = closest_pos
 
 func follow_closest_enemy():
+	if all_enemies.size() < 0:
+		return
 	var looking = 0
 	var closest_pos = 0
+	var closest = 0
 	while looking < all_enemies.size():
 			if all_enemies[looking] == null:
 				all_enemies.remove_at(looking)
 			else:
 				if all_enemies[looking].position.x < closest_pos or closest_pos == 0:
 					closest_pos = all_enemies[looking].position.x
+					closest = looking
 				looking += 1
+	
+	camera.to_follow = all_enemies[closest]
+	camera.position_smoothing_speed = 5
+	camera.position_smoothing_enabled = true
