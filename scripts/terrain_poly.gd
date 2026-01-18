@@ -3,7 +3,7 @@ extends Polygon2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	generate_terrain()
+	pass#generate_terrain()
 
 func generate_terrain():
 	var new_terrain = [Vector2(km(-1),m(500)), Vector2(km(10),m(500))]

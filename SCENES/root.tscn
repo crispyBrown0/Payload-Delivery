@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=22 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
+[ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://SCENES/root.gd" id="1_ogkre"]
 [ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://scripts/terrain.gd" id="2_hoix4"]
 [ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://scripts/terrain_poly.gd" id="3_ak04c"]
 [ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://scripts/terrain_colli.gd" id="4_uqopg"]
@@ -18,8 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://cjo8t0pyhk67m" path="res://prefabs/projectiles/450cal.tscn" id="12_aug8v"]
 [ext_resource type="FontFile" uid="uid://bhcly8fa3dvsu" path="res://font/BunkerStencil-Regular.otf" id="12_sp5yh"]
 [ext_resource type="PackedScene" uid="uid://b85g57iooaxn6" path="res://prefabs/projectiles/5anti-tank.tscn" id="13_srn3p"]
+[ext_resource type="Script" uid="uid://nm8liduecj4y" path="res://scripts/shot_info.gd" id="17_ep8ct"]
+[ext_resource type="Script" uid="uid://drougtvv07es1" path="res://SCENES/enemy_spawner.gd" id="20_i2fri"]
 
 [node name="Root" type="Node2D"]
+script = ExtResource("1_ogkre")
 
 [node name="MAP" type="Node2D" parent="."]
 
@@ -112,6 +116,7 @@ text = "45.0 degrees
 target
 1000 m"
 autowrap_mode = 0
+script = ExtResource("17_ep8ct")
 
 [node name="okay" type="Button" parent="UI LAYER/Control"]
 layout_mode = 1
@@ -121,9 +126,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -50.0
+offset_top = 235.0
 offset_right = 100.0
-offset_bottom = 50.0
+offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -145,3 +150,8 @@ text = "SETTINGS"
 script = ExtResource("10_uqopg")
 type = 1
 settings = ExtResource("11_sp5yh")
+
+[node name="enemy spawner" type="Node2D" parent="." node_paths=PackedStringArray("shot_info")]
+script = ExtResource("20_i2fri")
+enemy = ExtResource("7_6ejct")
+shot_info = NodePath("../UI LAYER/Control/shot info")

@@ -5,7 +5,8 @@ extends StaticBody2D
 @onready var line = $TerrainLine
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	poly.generate_terrain()
+	pass
+func sync_colli_line():
 	colli.polygon = poly.polygon
 	line.points = poly.polygon
 

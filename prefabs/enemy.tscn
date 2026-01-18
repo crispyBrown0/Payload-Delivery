@@ -14,3 +14,6 @@ texture = ExtResource("2_qi2p4")
 
 [node name="collider" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 0, 100, 0, 50, 50)
+
+[node name="DOWNRAY" type="RayCast2D" parent="."]
+target_position = Vector2(0, 100000)

@@ -4,6 +4,10 @@ extends RigidBody2D
 @onready var collider = $collider
 var hp = 1
 @export var explosion: PackedScene
+@onready var downray = $DOWNRAY
+
+var when_check = 0.1
+var checked = false
 
 func _ready() -> void:
 	var bitmap = BitMap.new()
@@ -12,13 +16,18 @@ func _ready() -> void:
 	collider.polygon = bitmap.opaque_to_polygons(Rect2(Vector2.ZERO, sprite.texture.get_size()))[0]
 	collider.position -= sprite.texture.get_size()/2 * sprite.scale
 	collider.scale = sprite.scale
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_0):
-		#damage(1)
-		pass
+	when_check -= delta
+	if when_check <= 0 and !checked:
+		checked = true
+		if downray.is_colliding():
+			var pt = downray.get_collision_point()
+			position = pt + Vector2(0, -10 * 100)
 
 
 func damage(amt: int):
