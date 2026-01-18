@@ -32,6 +32,7 @@ func _ready() -> void:
 			load("res://sprite assets/weapons/Naval Gun.png"),
 			load("res://sprite assets/weapons/Unguided ICBM.png")
 			]
+	projectile = load("res://prefabs/projectiles/0projectile.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
