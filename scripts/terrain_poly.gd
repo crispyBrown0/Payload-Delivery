@@ -14,7 +14,7 @@ func generate_terrain():
 		scannerx -= m(randi_range(50, 100))
 		scannery += m(randi_range(-100, 100))
 		if scannery > 250:
-			scannery = 250 - m(randi_range(0, 100))
+			scannery = 250 - m(randi_range(0, 50))
 		if scannery < m(-350):
 			scannery = -350 + m(randi_range(0, 100))
 	while scannerx > m(30):
@@ -22,7 +22,7 @@ func generate_terrain():
 		scannerx -= m(randi_range(5, 15))
 		scannery += m(randi_range(-100, 100))
 		if scannery > 250:
-			scannery = 250 - m(randi_range(0, 100))
+			scannery = 250 - m(randi_range(0, 50))
 		if scannery < m(-350):
 			scannery = -350 + m(randi_range(0, 100))
 	new_terrain.append(Vector2(m(15), m(-1)))

@@ -15,7 +15,7 @@ ss2d/version="3.3.1"
 [application]
 
 config/name="Payload Delivery"
-run/main_scene="res://SCENES/root.tscn"
+run/main_scene="uid://bbmjkp62qsx3y"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

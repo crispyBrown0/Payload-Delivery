@@ -37,12 +37,12 @@ func _ready() -> void:
 	]
 	distances = [
 		Vector2(5, 13),
-		Vector2(25, 45),
+		Vector2(25, 43),
 		Vector2(125, 250),
 		Vector2(250, 620),
 		Vector2(650, 1050),
 		Vector2(2000, 4000),
-		Vector2(5000, 9000)
+		Vector2(5000, 8700)
 	]
 
 func spawn_enemies():
@@ -129,6 +129,8 @@ func try_spawning():
 		new_enemy.position = Vector2(randf_range(distances[type].x, distances[type].y) * 100, -500 * 100)
 		#new_enemy.position = Vector2(1000, -50000)
 		new_enemy.get_node("sprite").texture = sprites[type]
+		if type == 6:
+			new_enemy.isShip = true
 		var to_scale = scales[type]
 		if to_scale == 1:
 			to_scale *= randf_range(0.8, 1.3)

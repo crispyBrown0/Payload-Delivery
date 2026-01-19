@@ -6,6 +6,8 @@ var hp = 1
 @export var explosion: PackedScene
 @onready var downray = $DOWNRAY
 
+var isShip = false
+
 var bitmap: BitMap
 
 var when_check = 0.1
@@ -37,6 +39,8 @@ func _physics_process(delta: float) -> void:
 			position = pt + Vector2(0, -1 * bitmap.get_size().y * sprite.scale.y)
 			if position.y > -400 * 100:
 				checked = true
+				if isShip:
+					position.y = -350*100
 
 
 func damage(amt: int):
