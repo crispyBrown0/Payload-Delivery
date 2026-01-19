@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://yb08jl7tv5ux"]
+[gd_scene load_steps=7 format=3 uid="uid://yb08jl7tv5ux"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2gcyj"]
 [ext_resource type="Script" uid="uid://yvfqmd3oycyy" path="res://scripts/ending.gd" id="1_t3eu8"]
 [ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="2_eu5ou"]
 [ext_resource type="Texture2D" uid="uid://dx2iyckcatx6b" path="res://sprite assets/enemies/BattleshipYamoto.png" id="3_bcffj"]
 [ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="3_dvfqw"]
+[ext_resource type="AudioStream" uid="uid://bfk78cbcioqne" path="res://sfx/Click.wav" id="6_cbjik"]
 
 [node name="ending" type="Node2D"]
 script = ExtResource("1_t3eu8")
@@ -80,3 +81,8 @@ theme_override_font_sizes/font_size = 48
 text = "QUIT GAME"
 script = ExtResource("3_dvfqw")
 type = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cbjik")
+autoplay = true
+bus = &"SFX"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbmjkp62qsx3y"]
+[gd_scene load_steps=8 format=3 uid="uid://bbmjkp62qsx3y"]
 
 [ext_resource type="Texture2D" uid="uid://p6ma33ln1mpu" path="res://sprite assets/background/Background.png" id="1_pawoi"]
 [ext_resource type="Texture2D" uid="uid://bfhppwqu681r" path="res://sprite assets/PayloadDeliveryTitle.png" id="2_pawoi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="4_bwrsn"]
 [ext_resource type="PackedScene" uid="uid://bsglis4bpvfa" path="res://SCENES/root.tscn" id="5_pawoi"]
 [ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://SCENES/settings.tscn" id="5_xm10s"]
+[ext_resource type="AudioStream" uid="uid://bfk78cbcioqne" path="res://sfx/Click.wav" id="7_fwx5t"]
 
 [node name="mainmen" type="Control"]
 layout_mode = 3
@@ -81,3 +82,8 @@ text = "[font_size=200][bgcolor=black]LOADING..."
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fwx5t")
+autoplay = true
+bus = &"SFX"

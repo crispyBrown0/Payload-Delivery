@@ -6,11 +6,17 @@ class_name BUTTONS
 @export var game: PackedScene
 @export var loading: Control
 @export var guide: PackedScene
+var hover_sound
+var click_sound
 
 static var mouse_on_ui = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hover_sound = AudioStreamPlayer2D.new()
+	add_child(hover_sound)
+	click_sound = AudioStreamPlayer2D.new()
+	add_child(click_sound)
 	connect("pressed", clicked)
 	connect("mouse_entered", entered)
 	connect("mouse_exited", exited)
@@ -18,6 +24,8 @@ func _ready() -> void:
 
 func entered():
 	mouse_on_ui = true
+	hover_sound.stream = load("res://sfx/Hover.wav")
+	hover_sound.play()
 func exited():
 	mouse_on_ui = false
 
@@ -41,6 +49,8 @@ func toggle_ff_toggle():
 		button_pressed = false
 
 func clicked():
+	click_sound.stream = load("res://sfx/Click.wav")
+	click_sound.play()
 	match type:
 		0:
 			#get_tree().change_scene_to_file("res://root.tscn")
