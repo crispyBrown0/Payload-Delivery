@@ -7,6 +7,7 @@ extends Sprite2D
 @export var okay: Button
 @export var shot_info: RichTextLabel
 @export var minimap: Control
+@onready var sound = $gunsound
 
 @export var map_bullet: PackedScene
 
@@ -14,6 +15,7 @@ var WEAPON = 0
 @export var velocities: Array[int]
 @export var guns: Array[Texture2D]
 var names: Array[String]
+var sounds: Array[AudioStream]
 
 var can_fire = true
 
@@ -47,6 +49,17 @@ func _ready() -> void:
 			"MBT Cannon",
 			"Naval Turret",
 			"Ballistic Missile"]
+	sounds = [
+		load("res://sfx/powerup.mp3"),
+		load("res://sfx/Weapon SFX/rubber band.mp3"),
+		load("res://sfx/Weapon SFX/bb gun.mp3"),
+		load("res://sfx/Weapon SFX/9mm.mp3"),
+		load("res://sfx/Weapon SFX/50bmg.mp3"),
+		load("res://sfx/Weapon SFX/tank.mp3"),
+		load("res://sfx/Weapon SFX/MBT.mp3"),
+		load("res://sfx/Weapon SFX/naval.mp3"),
+		load("res://sfx/Weapon SFX/rubber band.mp3")
+	]
 	
 	if minimap == null:
 		minimap = get_tree().current_scene.get_node("UI LAYER/Control/map")
@@ -110,6 +123,8 @@ func try_fire():
 	if WEAPON == 8:
 		okay.visible = false
 		self_modulate = Color(1, 1, 1, 0)
+	sound.stream = sounds[WEAPON]
+	sound.play()
 	
 	var new_projectile = projectile.instantiate()
 	new_projectile.projectile_velocity = velocities[WEAPON]
@@ -119,6 +134,9 @@ func try_fire():
 	new_projectile.position = Vector2.ZERO
 	new_projectile.linear_velocity = Vector2.RIGHT.rotated(rotation) * new_projectile.projectile_velocity
 	new_projectile.freeze = false
+	
+	if WEAPON == 8:
+		new_projectile.is_missile = true
 	
 	new_projectile.reparent(get_tree().current_scene)
 	cam.to_follow = new_projectile

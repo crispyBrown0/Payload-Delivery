@@ -65,3 +65,6 @@ func clicked():
 		6:
 			get_tree().paused = false
 			get_tree().change_scene_to_file("res://SCENES/mainmen.tscn")
+		7:
+			get_tree().paused = false
+			get_tree().change_scene_to_file("res://SCENES/ending.tscn")

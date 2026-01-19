@@ -11,6 +11,10 @@ var timer = 0
 var delet_in = 120
 var vol_timer = 0
 
+var is_missile = false
+var counting_down = false
+var countdown = 0.2
+
 
 func _ready() -> void:
 	freeze = true
@@ -34,6 +38,11 @@ func _process(delta: float) -> void:
 		
 	if rotation_degrees > 15 and Engine.time_scale > 1:
 		pass#Engine.time_scale = 1
+		
+	if counting_down:
+		countdown -= delta
+		if countdown <= 0:
+			get_tree().change_scene_to_file("res://SCENES/nuke.tscn")
 
 func _physics_process(delta: float) -> void:
 	look_at(linear_velocity+ global_position)
@@ -63,6 +72,10 @@ func _on_body_entered(body: Node) -> void:
 	if Engine.time_scale > 1:
 		Engine.time_scale = 1
 	
+	if is_missile:
+		start_countdown()
+		return
+	
 	if body.has_method("damage"):
 		body.damage(dmg)
 	else:
@@ -75,3 +88,6 @@ func _on_body_entered(body: Node) -> void:
 		new_dirt.rotation = 0
 	
 	queue_free()
+
+func start_countdown():
+	counting_down = true

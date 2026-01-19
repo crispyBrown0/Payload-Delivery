@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbmjkp62qsx3y"]
 
-[ext_resource type="Texture2D" uid="uid://c75ixqcu6nk5a" path="res://sprite assets/placeholders/placeholder tankj.png" id="1_v3601"]
+[ext_resource type="Texture2D" uid="uid://p6ma33ln1mpu" path="res://sprite assets/background/Background.png" id="1_pawoi"]
 [ext_resource type="FontFile" uid="uid://blgm6ljfdfuhm" path="res://font/BlackWhiteBlock.ttf" id="2_xm10s"]
 [ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="3_tv5ll"]
 [ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="4_bwrsn"]
@@ -20,7 +20,7 @@ pivot_offset = Vector2(960, 540)
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_v3601")
+texture = ExtResource("1_pawoi")
 
 [node name="title" type="RichTextLabel" parent="."]
 layout_mode = 0

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bye6l3o603wry" path="res://scripts/projectile.gd" id="1_how8d"]
 [ext_resource type="Texture2D" uid="uid://jbedd4uk5rsp" path="res://sprite assets/weapons/50BMG.png" id="2_8krbc"]
-[ext_resource type="PackedScene" uid="uid://swuwhmvbi3n2" path="res://prefabs/dirts.tscn" id="2_jliq7"]
+[ext_resource type="PackedScene" uid="uid://by0v5ysi5g0rx" path="res://prefabs/dirts.tscn" id="2_jliq7"]
 [ext_resource type="AudioStream" uid="uid://cyh772qxec1cx" path="res://sfx/wind.mp3" id="4_gj6tf"]
 [ext_resource type="AudioStream" uid="uid://bq66sahbx8c3q" path="res://sfx/sheperd.wav" id="5_fvtb6"]
 

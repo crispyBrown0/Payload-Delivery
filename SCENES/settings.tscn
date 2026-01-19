@@ -132,6 +132,19 @@ text = "MAIN MENU"
 script = ExtResource("2_3ykye")
 type = 6
 
+[node name="giveup" type="Button" parent="."]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 692.0
+offset_right = 1114.0
+offset_bottom = 772.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_nkug2")
+theme_override_font_sizes/font_size = 75
+text = "GIVE UP?"
+script = ExtResource("2_3ykye")
+type = 7
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 436.0

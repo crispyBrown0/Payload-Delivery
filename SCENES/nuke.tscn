@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c05hnelqnbx3x"]
+
+[ext_resource type="Script" uid="uid://cl7ensacs7hdj" path="res://scripts/nuke.gd" id="1_5u6h5"]
+[ext_resource type="AudioStream" uid="uid://bijx80ji8bxvc" path="res://sfx/nuke.mp3" id="1_v3gvs"]
+[ext_resource type="Texture2D" uid="uid://bnq1jpuuecrc0" path="res://sprite assets/explosion.png" id="2_ep0yt"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5u6h5"]
+
+[node name="nuke" type="Node2D"]
+script = ExtResource("1_5u6h5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_v3gvs")
+volume_db = -6.0
+autoplay = true
+bus = &"SFX"
+
+[node name="bg" type="Sprite2D" parent="."]
+modulate = Color(0.2641061, 0.762267, 0.99999994, 1)
+scale = Vector2(1920, 1080)
+texture = SubResource("CanvasTexture_5u6h5")
+centered = false
+
+[node name="nuke" type="Sprite2D" parent="."]
+position = Vector2(983, 516.48193)
+scale = Vector2(21.422256, 10.51144)
+texture = ExtResource("2_ep0yt")
+region_enabled = true
+region_rect = Rect2(1682.272, 12.5, 119, 178)
+
+[node name="flashbang" type="Sprite2D" parent="."]
+scale = Vector2(1920, 1080)
+texture = SubResource("CanvasTexture_5u6h5")
+centered = false

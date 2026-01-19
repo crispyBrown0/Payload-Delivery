@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://yb08jl7tv5ux"]
+
+[ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2gcyj"]
+[ext_resource type="Script" uid="uid://yvfqmd3oycyy" path="res://scripts/ending.gd" id="1_t3eu8"]
+[ext_resource type="FontFile" uid="uid://cd3pnrlr2kwiw" path="res://font/Pixelbasel.ttf" id="2_eu5ou"]
+[ext_resource type="Texture2D" uid="uid://dx2iyckcatx6b" path="res://sprite assets/enemies/BattleshipYamoto.png" id="3_bcffj"]
+[ext_resource type="Script" uid="uid://78gpxf7q7v8c" path="res://scripts/button.gd" id="3_dvfqw"]
+
+[node name="ending" type="Node2D"]
+script = ExtResource("1_t3eu8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(1.931, 1.088)
+texture = ExtResource("1_2gcyj")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 0.4627451)
+scale = Vector2(1.931, 1.088)
+texture = ExtResource("1_2gcyj")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1017, 814)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_bcffj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="final text" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 101.0
+offset_right = 1189.0
+offset_bottom = 878.0
+theme_override_fonts/normal_font = ExtResource("2_eu5ou")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[color=red][font_size=72]Thanks for playing Payload Delivery!
+
+[font_size=48]By khlob and brown
+
+
+[indent]Your stats:
+[indent]Levels Completed: 7/7
+Shots Fired: 40
+Targets Destroyed: 21"
+
+[node name="mainmen" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 682.0
+offset_right = 354.0
+offset_bottom = 732.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_eu5ou")
+theme_override_font_sizes/font_size = 48
+text = "MAIN MENU"
+script = ExtResource("3_dvfqw")
+type = 6
+
+[node name="quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 757.0
+offset_right = 354.0
+offset_bottom = 807.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_eu5ou")
+theme_override_font_sizes/font_size = 48
+text = "QUIT GAME"
+script = ExtResource("3_dvfqw")
+type = 2

@@ -121,6 +121,8 @@ func wipe_all():
 	all_enemies = []
 
 func try_spawning():
+	if type >= 7:
+		return
 	if spawned < amt:
 		var new_enemy  = enemy.instantiate()
 		#new_enemy.position = Vector2(lerp(distances[type].x, distances[type].y, i * 1.0 / amt) * 100, -500 * 100)

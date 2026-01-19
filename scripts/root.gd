@@ -12,7 +12,10 @@ class_name root
 @onready var message = $"UI LAYER/Control/tutorial"
 @onready var powerup = $powerup
 
-static var ammo = 10
+static var ammo = 0
+static var total_kills = 0
+static var levels_completed = 0
+
 var debug_level = 0
 
 func _ready() -> void:
@@ -26,6 +29,10 @@ func _ready() -> void:
 	range_guide_button.visible=  false
 	shot_info.visible = false
 	ff_button.visible = false
+	
+	ammo = 0
+	total_kills = 0
+	levels_completed = 0
 
 
 
@@ -65,8 +72,9 @@ func do_next_waves():
 		powerup.play()
 		message.reset()
 		wep.WEAPON += 1
+		levels_completed += 1
 		if enemy_spawner.type >= 7:
-			level_label.text = "NUCLEAR MISSILE"
+			level_label.text = "BALLISTIC MISSILE"
 			return
 		
 		enemy_spawner.spawn_enemies()
@@ -76,6 +84,7 @@ func do_next_waves():
 		level_label.text = "Level "+str(enemy_spawner.type+1)+"/8: "+wep.names[wep.WEAPON]
 
 func killd():
+	total_kills += 1
 	if enemy_spawner.kills < 3:
 		message.text = "HIT!"
 		message.reset()

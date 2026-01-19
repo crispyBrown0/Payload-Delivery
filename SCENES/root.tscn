@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=45 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://scripts/root.gd" id="1_ogkre"]
 [ext_resource type="Texture2D" uid="uid://p6ma33ln1mpu" path="res://sprite assets/background/Background.png" id="2_a184q"]
@@ -158,6 +158,11 @@ map_bullet = ExtResource("11_35tqq")
 velocities = Array[int]([2000, 1000, 2000, 5000, 7500, 10000, 20000, 35000, 2000])
 guns = Array[Texture2D]([ExtResource("16_h04ne"), ExtResource("17_2masc"), ExtResource("18_f7ifb"), ExtResource("19_a184q"), ExtResource("7_ep8ct"), ExtResource("21_juvyl"), ExtResource("22_2b2bk"), ExtResource("8_ogkre"), ExtResource("23_41goc")])
 
+[node name="gunsound" type="AudioStreamPlayer2D" parent="PlayerBase/PlayerWeapon"]
+volume_db = -3.0
+max_distance = 200000.0
+bus = &"SFX"
+
 [node name="UI LAYER" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI LAYER"]
@@ -180,7 +185,7 @@ offset_right = 1000.0
 offset_bottom = 735.0
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
+theme_override_constants/outline_size = 7
 theme_override_fonts/normal_font = ExtResource("21_pd5bg")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
@@ -239,8 +244,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -82.0
-offset_top = -40.0
+offset_left = -158.0
+offset_top = -96.0
+offset_right = -76.0
+offset_bottom = -56.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
@@ -309,7 +316,7 @@ texture = SubResource("NoiseTexture2D_dmwk1")
 script = ExtResource("25_dmwk1")
 
 [node name="Polygon2D" type="Polygon2D" parent="UI LAYER/Control/map"]
-color = Color(0.09291173, 0.10432886, 0.18171933, 1)
+color = Color(0.05783817, 0.06809681, 0.12626487, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI LAYER/Control/map"]
 layout_mode = 0
