@@ -1,9 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=44 format=3 uid="uid://bsglis4bpvfa"]
 
-[ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://scripts/root.gd" id="1_ogkre"]
+[ext_resource type="Texture2D" uid="uid://p6ma33ln1mpu" path="res://sprite assets/background/Background.png" id="2_a184q"]
 [ext_resource type="Script" uid="uid://bf8kp4qptkj3c" path="res://scripts/terrain.gd" id="2_hoix4"]
 [ext_resource type="Script" uid="uid://csu5fpgginurd" path="res://scripts/terrain_poly.gd" id="3_ak04c"]
+[ext_resource type="Texture2D" uid="uid://n5esl024wrdx" path="res://sprite assets/background/BackClouds.png" id="3_juvyl"]
+[ext_resource type="Texture2D" uid="uid://75i27i0rn1fh" path="res://sprite assets/background/ForeClouds.png" id="4_2b2bk"]
 [ext_resource type="Script" uid="uid://c0jkua43hhchw" path="res://scripts/terrain_colli.gd" id="4_uqopg"]
 [ext_resource type="Texture2D" uid="uid://xqajuavigfso" path="res://sprite assets/weapons/PlayerBase.png" id="6_eshlv"]
 [ext_resource type="Script" uid="uid://cixtg8s0rmx2q" path="res://scripts/player_weapon.gd" id="6_pbyad"]
@@ -50,8 +52,7 @@ color_ramp = SubResource("Gradient_7cqg0")
 [sub_resource type="ImageTexture" id="ImageTexture_2masc"]
 
 [sub_resource type="Gradient" id="Gradient_35tqq"]
-offsets = PackedFloat32Array(0, 0.4047619)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_h04ne"]
 
@@ -62,7 +63,7 @@ noise = SubResource("FastNoiseLite_h04ne")
 color_ramp = SubResource("Gradient_35tqq")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_f7ifb"]
-color = Color(1, 1, 1, 1)
+color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 thickness = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a184q"]
@@ -74,20 +75,39 @@ script = ExtResource("1_ogkre")
 
 [node name="MAP" type="Node2D" parent="."]
 
-[node name="Parallax2D" type="Parallax2D" parent="MAP"]
+[node name="BackGround" type="Parallax2D" parent="MAP"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1000, 1000)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="MAP/BackGround"]
+z_index = -10
+texture = ExtResource("2_a184q")
+
+[node name="BackClouds" type="Parallax2D" parent="MAP"]
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1000, 1000)
 repeat_times = 6
 
-[node name="Sprite2D" type="Sprite2D" parent="MAP/Parallax2D"]
+[node name="Sprite2D" type="Sprite2D" parent="MAP/BackClouds"]
+self_modulate = Color(1, 1, 1, 0.11372549)
 z_index = -10
-texture = ExtResource("1_2xdqe")
+texture = ExtResource("3_juvyl")
+
+[node name="ForeClouds" type="Parallax2D" parent="MAP"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1000, 1000)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="MAP/ForeClouds"]
+self_modulate = Color(1, 1, 1, 0.14901961)
+z_index = -10
+texture = ExtResource("4_2b2bk")
 
 [node name="Terrain" type="StaticBody2D" parent="MAP"]
 script = ExtResource("2_hoix4")
 
 [node name="TerrainPoly" type="Polygon2D" parent="MAP/Terrain"]
-color = Color(0.25, 0.195, 0.099999994, 1)
 polygon = PackedVector2Array(-1581, 813, 6315, 818, 5259, 7, 5052, -366, 4626, -460, 4001, -102, 3154, -80, 2281, -234, 1508, -32, -100, 95)
 script = ExtResource("3_ak04c")
 
@@ -97,7 +117,7 @@ script = ExtResource("4_uqopg")
 [node name="TerrainLine" type="Line2D" parent="MAP/Terrain"]
 closed = true
 width = 20.0
-default_color = Color(0.07233341, 0.62, 0, 1)
+default_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 
 [node name="CAMERA" type="Camera2D" parent="."]
 zoom = Vector2(0.7, 0.7)
@@ -275,7 +295,7 @@ type = 5
 guide = ExtResource("24_7cqg0")
 
 [node name="map" type="TextureRect" parent="UI LAYER/Control"]
-self_modulate = Color(0.3180196, 0.31801987, 0.31801972, 1)
+self_modulate = Color(0.13333334, 0.1254902, 0.20392157, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
