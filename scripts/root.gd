@@ -10,6 +10,7 @@ class_name root
 @onready var ff_button = $"UI LAYER/Control/ff"
 @onready var ammo_text = $"UI LAYER/Control/ammo"
 @onready var message = $"UI LAYER/Control/tutorial"
+@onready var powerup = $powerup
 
 static var ammo = 10
 var debug_level = 0
@@ -19,13 +20,12 @@ func _ready() -> void:
 	$MAP/Terrain.sync_colli_line()
 	enemy_spawner.type = 0
 	enemy_spawner.spawn_enemies()
-	level_label.text = "(0/3) Level 1: Rubber Band"
+	level_label.text = "Level 1/8: Rubber Band"
 	$"UI LAYER/Control/map".draw_map($MAP/Terrain/TerrainPoly.polygon)
 	
 	range_guide_button.visible=  false
 	shot_info.visible = false
 	ff_button.visible = false
-	
 
 
 
@@ -62,6 +62,7 @@ func do_next_waves():
 		level_slider.level_up()
 		enemy_spawner.wipe_all()
 		message.text = "Level Up!"
+		powerup.play()
 		message.reset()
 		wep.WEAPON += 1
 		if enemy_spawner.type >= 7:
@@ -72,7 +73,7 @@ func do_next_waves():
 		shot_info.last_known_bullet_x = 0
 	else:
 		level_slider.to_value = enemy_spawner.kills
-		level_label.text = "("+str(enemy_spawner.kills)+"/3) Level "+str(enemy_spawner.type+1)+": "+wep.names[wep.WEAPON]
+		level_label.text = "Level "+str(enemy_spawner.type+1)+"/8: "+wep.names[wep.WEAPON]
 
 func killd():
 	if enemy_spawner.kills < 3:

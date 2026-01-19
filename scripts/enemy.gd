@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	if when_check <= 0 and !checked:
 		if downray.is_colliding():
 			var pt = downray.get_collision_point()
-			position = pt + Vector2(0, -1 * bitmap.get_size().y)
+			position = pt + Vector2(0, -1 * bitmap.get_size().y * sprite.scale.y)
 			if position.y > -400 * 100:
 				checked = true
 

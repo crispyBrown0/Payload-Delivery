@@ -4,9 +4,12 @@ extends RigidBody2D
 @export var projectile_velocity: float = 2000
 @export var hi_speed: bool
 @export var dirt_effect: PackedScene
+@onready var wind = $wind
+@onready var sheperd = $sheperd
 var dmg = 1
 var timer = 0
 var delet_in = 120
+var vol_timer = 0
 
 
 func _ready() -> void:
@@ -19,10 +22,12 @@ func _ready() -> void:
 		#$"hi-speeds".disabled = false
 	#else:
 		#$"hi-speeds".disabled = true
+	sheperd.volume_db = -60
 func set_sprite(newsprite: Texture2D):
 	$Sprite2D.texture = newsprite
 
 func _process(delta: float) -> void:
+	vol_timer += delta
 	delet_in -= delta
 	if delet_in <= 0:
 		pass#queue_free()
@@ -41,6 +46,17 @@ func _physics_process(delta: float) -> void:
 		new_dirt.reparent(get_tree().current_scene)
 		new_dirt.rotation = 0
 		queue_free()
+	
+	var vel = linear_velocity.length()
+	wind.volume_linear = vel / 10000
+	wind.volume_db -= 6
+	if wind.volume_db > -6:
+		wind.volume_db = -6
+	
+	if sheperd.volume_db < -6:
+		sheperd.volume_db = -60 + (vol_timer * 3)
+		sheperd.volume_linear *= wind.volume_linear
+	
 
 
 func _on_body_entered(body: Node) -> void:

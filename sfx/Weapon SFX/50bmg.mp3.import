@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fw37oan7vli7"
+path="res://.godot/imported/50bmg.mp3-959e5e256bfe5f06f60fe08ae0e8b037.mp3str"
+
+[deps]
+
+source_file="res://sfx/Weapon SFX/50bmg.mp3"
+dest_files=["res://.godot/imported/50bmg.mp3-959e5e256bfe5f06f60fe08ae0e8b037.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

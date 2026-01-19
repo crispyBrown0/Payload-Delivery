@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmkerlxk4ys22"]
+[gd_scene load_steps=8 format=3 uid="uid://bmkerlxk4ys22"]
 
 [ext_resource type="Script" uid="uid://bye6l3o603wry" path="res://scripts/projectile.gd" id="1_how8d"]
 [ext_resource type="Texture2D" uid="uid://jbedd4uk5rsp" path="res://sprite assets/weapons/50BMG.png" id="2_8krbc"]
 [ext_resource type="PackedScene" uid="uid://swuwhmvbi3n2" path="res://prefabs/dirts.tscn" id="2_jliq7"]
+[ext_resource type="AudioStream" uid="uid://cyh772qxec1cx" path="res://sfx/wind.mp3" id="4_gj6tf"]
+[ext_resource type="AudioStream" uid="uid://bq66sahbx8c3q" path="res://sfx/sheperd.wav" id="5_fvtb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxf0c"]
 size = Vector2(3.5, 3.3333335)
@@ -34,7 +36,20 @@ position = Vector2(500, 0)
 shape = SubResource("RectangleShape2D_how8d")
 disabled = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="wind" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gj6tf")
+volume_db = -6.0
 autoplay = true
+max_distance = 10000.0
+attenuation = 0.0
+bus = &"SFX"
+
+[node name="sheperd" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fvtb6")
+volume_db = -6.0
+autoplay = true
+max_distance = 10000.0
+attenuation = 0.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

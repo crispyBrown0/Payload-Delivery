@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bsglis4bpvfa"]
+[gd_scene load_steps=43 format=3 uid="uid://bsglis4bpvfa"]
 
 [ext_resource type="Texture2D" uid="uid://b6ei84gpml4l5" path="res://sprite assets/placeholders/lava.png" id="1_2xdqe"]
 [ext_resource type="Script" uid="uid://lr7njsiknxlw" path="res://scripts/root.gd" id="1_ogkre"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://b54ja1fewxrjm" path="res://scripts/map.gd" id="25_dmwk1"]
 [ext_resource type="Script" uid="uid://cf2hg7na5ny3m" path="res://scripts/level_slider.gd" id="27_h04ne"]
 [ext_resource type="Script" uid="uid://cygo6upqykp4" path="res://scripts/tutorial.gd" id="28_2masc"]
+[ext_resource type="AudioStream" uid="uid://ip768c70os1q" path="res://sfx/powerup.mp3" id="31_f7ifb"]
 
 [sub_resource type="Gradient" id="Gradient_7cqg0"]
 colors = PackedColorArray(0.851769, 0.8517689, 0.85176885, 1, 1, 1, 1, 1)
@@ -380,3 +381,8 @@ enemy = ExtResource("7_6ejct")
 shot_info = NodePath("../UI LAYER/Control/shot info")
 camera = NodePath("../CAMERA")
 mapobj = ExtResource("11_35tqq")
+
+[node name="powerup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_f7ifb")
+volume_db = -10.0
+bus = &"SFX"

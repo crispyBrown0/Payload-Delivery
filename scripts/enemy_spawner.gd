@@ -32,8 +32,8 @@ func _ready() -> void:
 		1,
 		1.5,
 		2,
-		2.5,
-		2
+		3,
+		3.5
 	]
 	distances = [
 		Vector2(5, 13),
