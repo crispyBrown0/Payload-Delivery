@@ -10,7 +10,7 @@
 script = ExtResource("1_t3eu8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 1, 1)
 scale = Vector2(1.931, 1.088)
 texture = ExtResource("1_2gcyj")
 centered = false
@@ -47,7 +47,7 @@ theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
 text = "[color=red][font_size=72]Thanks for playing Payload Delivery!
 
-[font_size=48]By khlob and brown
+[font_size=48]By khlob and crispyBrown
 
 
 [indent]Your stats:
