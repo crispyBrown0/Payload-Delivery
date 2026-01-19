@@ -43,7 +43,7 @@ func write_info():
 	
 	
 	
-	text = print_angle + "\n" + print_dist + "\n\ntarget\n" + print_enemy_x +"\n" + print_enemy_diff
+	text = " " + print_angle + "\n " + print_dist + "\n\n target\n " + print_enemy_x +"\n " + print_enemy_diff
 
 
 func str_m_or_km(dist: float) -> String:
