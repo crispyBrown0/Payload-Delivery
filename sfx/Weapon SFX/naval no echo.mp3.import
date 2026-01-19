@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnua1slar8ha7"
+path="res://.godot/imported/naval no echo.mp3-c87b981af3a3ade884c8e5236ccae36c.mp3str"
+
+[deps]
+
+source_file="res://sfx/Weapon SFX/naval no echo.mp3"
+dest_files=["res://.godot/imported/naval no echo.mp3-c87b981af3a3ade884c8e5236ccae36c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

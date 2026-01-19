@@ -159,7 +159,7 @@ velocities = Array[int]([2000, 1000, 2000, 5000, 7500, 10000, 20000, 35000, 2000
 guns = Array[Texture2D]([ExtResource("16_h04ne"), ExtResource("17_2masc"), ExtResource("18_f7ifb"), ExtResource("19_a184q"), ExtResource("7_ep8ct"), ExtResource("21_juvyl"), ExtResource("22_2b2bk"), ExtResource("8_ogkre"), ExtResource("23_41goc")])
 
 [node name="gunsound" type="AudioStreamPlayer2D" parent="PlayerBase/PlayerWeapon"]
-volume_db = -3.0
+volume_db = -6.0
 max_distance = 200000.0
 bus = &"SFX"
 
@@ -411,5 +411,5 @@ mapobj = ExtResource("11_35tqq")
 
 [node name="powerup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_f7ifb")
-volume_db = -10.0
+volume_db = -12.0
 bus = &"SFX"

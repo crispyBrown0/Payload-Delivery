@@ -52,12 +52,12 @@ func _ready() -> void:
 	sounds = [
 		load("res://sfx/powerup.mp3"),
 		load("res://sfx/Weapon SFX/rubber band.mp3"),
-		load("res://sfx/Weapon SFX/bb gun.mp3"),
+		load("res://sfx/Weapon SFX/BB gun.mp3"),
 		load("res://sfx/Weapon SFX/9mm.mp3"),
 		load("res://sfx/Weapon SFX/50bmg.mp3"),
 		load("res://sfx/Weapon SFX/tank.mp3"),
 		load("res://sfx/Weapon SFX/MBT.mp3"),
-		load("res://sfx/Weapon SFX/naval.mp3"),
+		load("res://sfx/Weapon SFX/naval no echo.mp3"),
 		load("res://sfx/Weapon SFX/rubber band.mp3")
 	]
 	

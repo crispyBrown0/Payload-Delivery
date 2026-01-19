@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 	timer += delta
 	
 	if timer > 5:
-		get_tree().change_scene_to_file("res://SCENES/mainmen.tscn")
+		get_tree().change_scene_to_file("res://SCENES/ending.tscn")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxbkcng17x0vj" path="res://scripts/explosion.gd" id="1_yp45b"]
 [ext_resource type="Texture2D" uid="uid://bnq1jpuuecrc0" path="res://sprite assets/explosion.png" id="2_5nl6p"]
-[ext_resource type="AudioStream" uid="uid://b5dackslmc8ix" path="res://sfx/explosion.wav" id="3_j712m"]
+[ext_resource type="AudioStream" uid="uid://4xxfw7kv8b1i" path="res://sfx/explosion.mp3" id="3_yp45b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxas0"]
 atlas = ExtResource("2_5nl6p")
@@ -139,8 +139,8 @@ sprite_frames = SubResource("SpriteFrames_q85pl")
 offset = Vector2(0, -23)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_j712m")
-volume_db = -14.0
+stream = ExtResource("3_yp45b")
+volume_db = -6.0
 autoplay = true
 bus = &"SFX"
 

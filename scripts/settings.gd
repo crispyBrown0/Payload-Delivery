@@ -3,6 +3,7 @@ extends Control
 @onready var vol_main: Slider = $slider1
 @onready var vol_sfx: Slider = $slider2
 @onready var vol_music: Slider = $slider3
+@onready var giveup = $giveup
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = true
@@ -21,6 +22,9 @@ func _ready() -> void:
 	vol_main.value = AudioServer.get_bus_volume_linear(0)
 	vol_sfx.value = AudioServer.get_bus_volume_linear(1)
 	vol_music.value = AudioServer.get_bus_volume_linear(2)
+	
+	if get_tree().current_scene.name != "Root":
+		giveup.visible = false
 	
 	
 
