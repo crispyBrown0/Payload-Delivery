@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dutss3tv1b2yb"
+path="res://.godot/imported/DoTM unused comp.mp3-d2a16d65289cda16961e34366c52ca80.mp3str"
+
+[deps]
+
+source_file="res://music/gameplay/DoTM unused comp.mp3"
+dest_files=["res://.godot/imported/DoTM unused comp.mp3-d2a16d65289cda16961e34366c52ca80.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgqx4l2biyrpt"
+path="res://.godot/imported/half-tracked comp.mp3-64f55e3e55cb3cb512cbbf0ee33b6fa5.mp3str"
+
+[deps]
+
+source_file="res://music/gameplay/half-tracked comp.mp3"
+dest_files=["res://.godot/imported/half-tracked comp.mp3-64f55e3e55cb3cb512cbbf0ee33b6fa5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

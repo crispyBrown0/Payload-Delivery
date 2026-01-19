@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbmjkp62qsx3y"]
+[gd_scene load_steps=9 format=3 uid="uid://bbmjkp62qsx3y"]
 
 [ext_resource type="Texture2D" uid="uid://p6ma33ln1mpu" path="res://sprite assets/background/Background.png" id="1_pawoi"]
 [ext_resource type="Texture2D" uid="uid://bfhppwqu681r" path="res://sprite assets/PayloadDeliveryTitle.png" id="2_pawoi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bsglis4bpvfa" path="res://SCENES/root.tscn" id="5_pawoi"]
 [ext_resource type="PackedScene" uid="uid://bqhy0m0a2cbl5" path="res://SCENES/settings.tscn" id="5_xm10s"]
 [ext_resource type="AudioStream" uid="uid://bfk78cbcioqne" path="res://sfx/Click.wav" id="7_fwx5t"]
+[ext_resource type="AudioStream" uid="uid://dev7s74md3vxq" path="res://music/payload delivery.mp3" id="8_oq1e4"]
 
 [node name="mainmen" type="Control"]
 layout_mode = 3
@@ -87,3 +88,10 @@ vertical_alignment = 1
 stream = ExtResource("7_fwx5t")
 autoplay = true
 bus = &"SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_oq1e4")
+volume_db = -2.5
+autoplay = true
+bus = &"Music"

@@ -11,6 +11,9 @@ class_name root
 @onready var ammo_text = $"UI LAYER/Control/ammo"
 @onready var message = $"UI LAYER/Control/tutorial"
 @onready var powerup = $powerup
+@onready var music = $MUSIC
+var tracks: Array[AudioStream]
+var playingi = 0
 
 static var ammo = 0
 static var total_kills = 0
@@ -33,6 +36,17 @@ func _ready() -> void:
 	ammo = 0
 	total_kills = 0
 	levels_completed = 0
+	
+	tracks = [
+		load("res://music/gameplay/Alt-Blossom_3 comp.mp3"),
+		load("res://music/gameplay/DoTM unused comp.mp3"),
+		load("res://music/gameplay/half-tracked comp.mp3"),
+		load("res://music/gameplay/lenk64 otenbakoimusume_4 comp.mp3"),
+		load("res://music/gameplay/tsunkaten game ver comp.mp3")
+	]
+	tracks.shuffle()
+	music.stream = tracks[0]
+	music.play()
 
 
 
@@ -88,3 +102,11 @@ func killd():
 	if enemy_spawner.kills < 3:
 		message.text = "HIT!"
 		message.reset()
+
+
+func _on_music_finished() -> void:
+	playingi += 1
+	if playingi >= tracks.size():
+		playingi = 0
+	music.stream = tracks[playingi]
+	music.play()

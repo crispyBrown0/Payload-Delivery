@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csgwraobj4lv6"
+path="res://.godot/imported/lenk64 otenbakoimusume_4 comp.mp3-c81e3dbb506e7784d65c20b97b6e90c1.mp3str"
+
+[deps]
+
+source_file="res://music/gameplay/lenk64 otenbakoimusume_4 comp.mp3"
+dest_files=["res://.godot/imported/lenk64 otenbakoimusume_4 comp.mp3-c81e3dbb506e7784d65c20b97b6e90c1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

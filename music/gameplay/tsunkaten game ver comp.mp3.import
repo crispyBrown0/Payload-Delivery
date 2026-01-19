@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cm3kg0r53jjs3"
+path="res://.godot/imported/tsunkaten game ver comp.mp3-585e5ac91bb6942211742538c39690d4.mp3str"
+
+[deps]
+
+source_file="res://music/gameplay/tsunkaten game ver comp.mp3"
+dest_files=["res://.godot/imported/tsunkaten game ver comp.mp3-585e5ac91bb6942211742538c39690d4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

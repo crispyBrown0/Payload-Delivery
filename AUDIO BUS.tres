@@ -6,7 +6,7 @@ threshold_db = -3.0
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_bvar3"]
 resource_name = "Limiter"
-threshold_db = -6.0
+ceiling_db = -6.0
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_2j6iu"]
 resource_name = "Limiter"
